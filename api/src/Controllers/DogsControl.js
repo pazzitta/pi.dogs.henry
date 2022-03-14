@@ -87,7 +87,7 @@ const getAllDogsAndName = async (req, res, next) => {
         if (name) {
            let dogsByName = allInfoT.filter(el => el.name.toLowerCase().includes(name.toLowerCase()));
            dogsByName.length?
-           res.status(200).send(dogsByName):
+           res.send(dogsByName):
            res.status(404).send('Disculpe, la raza no fue encontrada, intente con otra')       
         } else {
             res.json(allInfoT)
@@ -114,10 +114,10 @@ const getById = async (req, res, next) => {
             })
             infoNecId.length === 0?
             res.status(404).send ('No se encontró el perrito requerido, intentelo de nuevo'):
-            res.status(200).send (infoNecId)
+            res.send (infoNecId)
         } else {
             let infoDbById = await oneByDB (id);            
-            return res.status(200).json(infoDbById)
+            return res.json(infoDbById)
         }
     } catch (error) {
         next (error)
@@ -125,8 +125,27 @@ const getById = async (req, res, next) => {
 
 };
 
-//POST
- const createNewRace = () => {
+//POST 
+
+//el post anda pero si le garego los temperamentos, como aún no hice la ruta no las funciones ni cargé la base de datos no anda!
+ const createNewRace = async (req, res) => {
+     try{
+         const {name, height, weight, life_span, image, temperament} = req.body;
+         const newRace = await Dog.create({
+            name,
+            height,
+            weight,
+            life_span,
+            image
+         })
+        //  let temperamentDB = await Temperament.findAll({
+        //     where: {name: temperament}
+        // })
+        // newRace.addTemperament(temperamentDB)
+        res.send(newRace) 
+     }catch (error) {
+         console.log('no anda post')
+     }
 
  };
 
