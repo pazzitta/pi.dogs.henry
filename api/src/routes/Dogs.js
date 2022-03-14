@@ -6,7 +6,7 @@ const router = Router ();
 
 //GET
 router.get ('/get', getAllDogsAndName) //todos y el name por query
-router.get ('/:idRaza', getById)
+router.get ('/:id', getById)
 //POST
 router.post ('/create', createNewRace)
 

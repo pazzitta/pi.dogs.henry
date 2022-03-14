@@ -3,6 +3,7 @@ const {Dog, Temperament} = require ('../db')
 const {API_KEY1} = process.env
 
 //GETs (fucnciones previas)
+//all
 const getAllDogsApi = async () => {
     try {
         const pedidoApi = await axios (`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY1}`);
@@ -45,6 +46,29 @@ const allInfoApiAndDB = async () => { ///ESTA TENGO QUE USAR PARA LA PRÓXIMA RU
     return (allInfo)
 }
 
+//byId
+
+const oneById = async (id) => {
+    
+    const allForFilter = await axios (`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY1}`);
+    if(id) {
+        let oneById = await allForFilter.data.filter (el => el.id.toString() === el.id.toString()); 
+        return (oneById)
+    }
+}
+
+const oneByDB = async (id) => {
+    return await Dog.findByPk(id, {
+        include: {
+            model: Temperament,
+            attributes: ['name'],
+            through: {
+                attributes: [],
+            }
+        }
+    });
+}
+
 //GET (para la ruta)
 const getAllDogsAndName = async (req, res, next) => {
      try {
@@ -53,7 +77,7 @@ const getAllDogsAndName = async (req, res, next) => {
 
         if (name) {
            let dogsByName = allInfoT.filter(el => el.name.toLowerCase().includes(name.toLowerCase()));
-           recipeForName.length?
+           dogsByName.length?
            res.status(200).send(dogsByName):
            res.status(404).send('Disculpe, la raza no fue encontrada, intente con otra')       
         } else {
@@ -64,7 +88,31 @@ const getAllDogsAndName = async (req, res, next) => {
      }
 };
 
-const getById = () => {
+const getById = async (req, res, next) => {
+    const {id} = req.params 
+    try{
+    const allInfoById = await oneById();
+    if (id.length < 4) {
+            let infoNecId = allInfoById?.map (el => {
+                return {
+                    image: el.image,
+                    name: el.name,
+                    temperament: el.temperament? el.temperament : 'Perrito sin temperamento',
+                    weight: el.weight.metric,
+                    height: el.height.metric,
+                    life_span: el.life_span
+                }
+            })
+            infoNecId.length === 0?
+            res.status(404).send ('No se encontró el perrito requerido, intentelo de nuevo'):
+            res.status(200).send (infoNecId)
+        } else {
+            let infoDbById = await oneByDB (id);            
+            return res.status(200).json(infoDbById)
+        }
+    } catch (error) {
+        console.log ('no anda')
+    }
 
 };
 
