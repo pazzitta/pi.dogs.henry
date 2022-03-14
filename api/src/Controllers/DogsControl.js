@@ -50,11 +50,20 @@ const allInfoApiAndDB = async () => { ///ESTA TENGO QUE USAR PARA LA PRÓXIMA RU
 
 const oneById = async (id) => {
     
-    const allForFilter = await axios (`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY1}`);
-    if(id) {
-        let oneById = await allForFilter.data.filter (el => el.id.toString() === el.id.toString()); 
-        return (oneById)
+    try {
+        const allForFilter = await axios (`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY1}`);
+     if (id) {
+        const result = allForFilter.data.filter(e => e.id === Number(id));
+        return(result);
+    }       
+
+    }catch (error) {
+        console.log('Error en oneById')
     }
+  // if(id) {
+    //     let oneById = await allForFilter.data.filter (el => el.id.toString() === el.id.toString()); 
+    //     return (oneById)
+    // }
 }
 
 const oneByDB = async (id) => {
@@ -91,11 +100,11 @@ const getAllDogsAndName = async (req, res, next) => {
 const getById = async (req, res, next) => {
     const {id} = req.params 
     try{
-    const allInfoById = await oneById();
+    const allInfoById = await oneById(id);
     if (id.length < 4) {
             let infoNecId = allInfoById?.map (el => {
                 return {
-                    image: el.image,
+                    image: el.image.url,
                     name: el.name,
                     temperament: el.temperament? el.temperament : 'Perrito sin temperamento',
                     weight: el.weight.metric,
@@ -111,7 +120,7 @@ const getById = async (req, res, next) => {
             return res.status(200).json(infoDbById)
         }
     } catch (error) {
-        console.log ('no anda')
+        next (error)
     }
 
 };
