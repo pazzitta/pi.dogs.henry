@@ -1,0 +1,27 @@
+.landing {
+    height: 100vh;
+    width: 100vw;    
+    background-image: url("../../Imagenes/ImgPag/Landing\ page.imagen\ fondo.jpg"); 
+    /* hay que arreglar la imagèn para que coincida con la pantalla  */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+}
+.buttonInicio {
+    position: relative;
+    top: 26vw;
+    background-image: url("../../Imagenes/ImgPag/Boton\ inicio\ LP.png");
+    background-repeat:no-repeat;
+    background-color: transparent;
+    height: 17vh;
+    width: 17vw;
+    background-size: cover;
+    background-position:center;
+    border: none;
+    cursor: url("../../Imagenes/ImgPag/pointer3.png"), pointer;
+    color: #2A2A2A;
+    /* FALTA AGREGAR LA FUENTE, VER COMO SE HACE Y HACERLO */
+    font-style: trebuchet;
+    font-weight: 800;
+    font-size: 2.5rem;  
+}

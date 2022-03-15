@@ -1,0 +1,9 @@
+.barra {
+    position: relative;
+    background-image: url("../../Imagenes/ImgPag/Nav.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100vw;
+    height: 20vh;
+    background-size: 100%;
+ }

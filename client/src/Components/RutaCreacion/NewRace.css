@@ -1,0 +1,17 @@
+.buttonVolver {
+    position: relative;
+    bottom: 9.8vw;
+    left:35vw;
+    background-image: url("../../Imagenes/ImgPag/Boton\ Volver\ ruta\ creacion.png");
+    background-repeat:no-repeat;
+    background-color: transparent;
+    height: 19vh;
+    width: 19vw;
+    background-size: cover;
+    background-position:center;
+    border: none;
+    cursor: url("../../Imagenes/ImgPag/pointer3.png"), pointer;
+    font-style: trebuchet;
+    font-weight: 800;
+    font-size: 2.6rem;  
+}

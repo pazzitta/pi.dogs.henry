@@ -41,8 +41,10 @@ const getAllTemperaments = async (req, res, netx) => {
             where: { name: el}
         })
     });
+    
     const serchDb = await Temperament.findAll ()
     res.send (serchDb)
+    console.log(serchDb)
   } catch (error) {
       console.log ('no anda getAllTemperaments')
   }

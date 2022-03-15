@@ -1,0 +1,38 @@
+.buttonCreate {
+    position: relative;
+    bottom: 9.8vw;
+    right: 2.5vw;
+    background-image: url("../../../Imagenes/ImgPag/Boton\ Volver\ ruta\ creacion.png");
+    background-repeat:no-repeat;
+    background-color: transparent;
+    height: 19vh;
+    width: 19vw;
+    background-size: cover;
+    background-position:center;
+    border: none;
+    cursor: url("../../../Imagenes/ImgPag/pointer3.png"), pointer;
+   
+}
+.textCrear {
+    position: relative;
+    bottom: 16.4vw;
+    right: 2.9vw;
+    color: #2A2A2A;
+    /* FALTA AGREGAR LA FUENTE, VER COMO SE HACE Y HACERLO */
+    font-style: trebuchet;
+    font-weight: 800;
+    font-size: 2.6rem;  
+    cursor: url("../../../Imagenes/ImgPag/pointer3.png"), pointer;
+}
+
+.textNR {
+    position: relative;
+    bottom: 17.4vw;
+    right: 2.9vw;
+    color: #2A2A2A;
+    /* FALTA AGREGAR LA FUENTE, VER COMO SE HACE Y HACERLO */
+    font-style: trebuchet;
+    font-weight: 700;
+    font-size: 2rem;  
+    cursor: url("../../../Imagenes/ImgPag/pointer3.png"), pointer;
+}
