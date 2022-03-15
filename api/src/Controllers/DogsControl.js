@@ -127,7 +127,7 @@ const getById = async (req, res, next) => {
 
 //POST 
 
-//el post anda pero si le garego los temperamentos, como aún no hice la ruta no las funciones ni cargé la base de datos no anda!
+//el post anda pero me pasa lo mismo que antes con los temperamentos, no los agrega!
  const createNewRace = async (req, res) => {
      try{
          const {name, height, weight, life_span, image, temperament} = req.body;
@@ -138,10 +138,10 @@ const getById = async (req, res, next) => {
             life_span,
             image
          })
-        //  let temperamentDB = await Temperament.findAll({
-        //     where: {name: temperament}
-        // })
-        // newRace.addTemperament(temperamentDB)
+         let temperamentDB = await Temperament.findAll({
+            where: {name: temperament}
+        })
+        newRace.addTemperament(temperamentDB)
         res.send(newRace) 
      }catch (error) {
          console.log('no anda post')
