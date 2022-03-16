@@ -1,7 +1,7 @@
 import React from "react";
 import "./Cards.css";
 
-// let prevId = 1;
+//FALTA ARRAGLAR LAS CARD PARA QUE TODAS LOS IMÁGENES SEAN IGUALES! Y LUEGO ORDENAMOS LOS ELEMENTOS NUEVAMENTE
 
 export default function Card ({image, name, temperament,weight}) {
     return (
@@ -16,10 +16,12 @@ export default function Card ({image, name, temperament,weight}) {
                         <div>{name}</div>
                      </div>
                      <div className="temperamentoC">
-                     <div>{temperament}</div>
+                        <div className="temperamentoCName">TEMPERAMENTOS</div>
+                           <div>{temperament}</div>
                      </div>
                      <div className="pesoC">
-                         <div>{weight}</div>
+                        <div className="pesoCName">PESO</div>
+                           <div>{weight} kg</div>
                      </div>
                   </div>
                </div>

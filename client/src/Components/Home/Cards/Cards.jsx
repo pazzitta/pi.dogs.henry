@@ -6,6 +6,8 @@ import "./Cards.css";
 // import Paginated from "../Paginado/Paginated";
 import { Link } from "react-router-dom";
 
+//FALTA PAGINADO Y TERMINAR DE ARREGLAR LAS CARDS
+
 // let prevId = 1;  key={prevId++} 
 
 export default function Cards () {
@@ -29,18 +31,17 @@ export default function Cards () {
 
     return (
         <div>
+            <div className="ordenCards">
             {estadoCard.length && estadoCard.map( (dogRace) => {
                    return (
                        <div key={dogRace.id} >
-                           <Link to= {"/detail/" + dogRace.id}>
+                           <Link to= {"/detail/" + dogRace.id} className="sinlinea">
                               <Card  image={dogRace.image} name={dogRace.name} temperament={dogRace.temperament} weight={dogRace.weight}  />
                            </Link>
                        </div>
                    )}               
                )}           
-           {/* <h2>Mis cards</h2>
-           {estadoCard.length && estadoCard.map( dogRace => 
-            <Card name={dogRace.name} image={dogRace.image} temperament={dogRace.temperament} weight={dogRace.weight} />)} */}
+            </div>
         </div>
         
     );

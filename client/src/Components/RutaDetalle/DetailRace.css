@@ -15,3 +15,125 @@
     font-weight: 800;
     font-size: 2.6rem;  
 }
+
+.imageDetail {
+    position: relative;
+    bottom:10vh;
+    left: 20vw;
+    width: 40vw;
+}
+.nameDetail {
+    position: relative;
+    bottom:70vh;
+    right:22vw;
+    color: rgb(42, 42, 42);
+    font-style: Trebuchet;
+    font-weight: 900;
+    font-size: 3.5em;
+    line-height : 30px; 
+}
+.tempNameDetail {
+    position: relative;
+    bottom:60vh;
+    left: 12vw;
+    background-color: rgb(202, 39, 42);
+    height: 5vh;
+    width: 30vw;
+    color: rgb(255, 255, 255);
+    font-style: Trebuchet;
+    font-weight: 760;
+    font-size: 2em;
+}
+.tempDetail {
+    position: relative;
+    bottom: 56vh;
+    left: 7vw;
+    background-color: rgb(255, 255, 255);
+    height: 12vh;
+    width: 40vw;
+    color: rgb(62, 62, 62);
+    font-style: Trebuchet;
+    font-weight: 600;
+    font-size: 1.7em;
+    line-height : 15px; 
+}
+
+.pesoNameDetail {
+    position: relative;
+    bottom:58vh;
+    left: 7vw;
+    background-color: rgb(20,105, 152);
+    height: 5vh;
+    width: 13.5vw;
+    color: rgb(255, 255, 255);
+    font-style: Trebuchet;
+    font-weight: 760;
+    font-size: 2em;
+}
+/* todavia este no está  */
+.pesoDetail {
+    position: relative;
+    bottom: 55vh;
+    left: 7vw;
+    background-color: rgb(134, 31, 31);
+    height: 13vh;
+    width: 40vw;
+    color: rgb(62, 62, 62);
+    font-style: Trebuchet;
+    font-weight: 600;
+    font-size: 1.7em;
+    line-height : 15px; 
+}
+
+.alturaNameDetail {
+    position: relative;
+    bottom:65.2vh;
+    left: 20vw;
+    background-color: rgb(131,200, 151);
+    height: 5vh;
+    width: 13.5vw;
+    color: rgb(255, 255, 255);
+    font-style: Trebuchet;
+    font-weight: 760;
+    font-size: 2em;
+}
+/* todavia este no está  */
+.alturaDetail {
+    position: relative;
+    bottom: 55vh;
+    left: 7vw;
+    background-color: rgb(134, 31, 31);
+    height: 13vh;
+    width: 40vw;
+    color: rgb(62, 62, 62);
+    font-style: Trebuchet;
+    font-weight: 600;
+    font-size: 1.7em;
+    line-height : 15px; 
+}
+.liveNameDetail {
+    position: relative;
+    bottom:72.5vh;
+    left: 33.5vw;
+    background-color: rgb(144,91, 166);
+    height: 5vh;
+    width: 13.5vw;
+    color: rgb(255, 255, 255);
+    font-style: Trebuchet;
+    font-weight: 760;
+    font-size: 2em;
+}
+/* todavia este no está  */
+.liveDetail {
+    position: relative;
+    bottom: 55vh;
+    left: 7vw;
+    background-color: rgb(134, 31, 31);
+    height: 13vh;
+    width: 40vw;
+    color: rgb(62, 62, 62);
+    font-style: Trebuchet;
+    font-weight: 600;
+    font-size: 1.7em;
+    line-height : 15px; 
+}
