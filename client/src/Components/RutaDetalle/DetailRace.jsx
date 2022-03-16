@@ -6,7 +6,7 @@ import { getRaceDetail } from "../../Redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 
-
+//TENGO QUE LIMITAR LA FOTO A UN TAMAÑO! SINO HACE LO MISMO QUE CON LAS CARDS! Y VER PORQUÉ ESTÁ TAN GRANDELA PÁGINA, EL TOTAL DE ELLA!
 export default function DetailRace (props) {
 
 const dispatch = useDispatch();
@@ -39,11 +39,11 @@ useEffect(() => {
                <div className="tempNameDetail">Temperamentos</div>
                <div className="tempDetail">{raceDetails[0].temperament}</div>
                <div className="pesoNameDetail" >Peso</div>
-               <div>{raceDetails[0].height} kg</div>
+               <div className="pesoDetail">{raceDetails[0].height} kg</div>
                <div className="alturaNameDetail">Altura</div>
-               <div>{raceDetails[0].weight} m </div>
+               <div className="alturaDetail">{raceDetails[0].weight} m </div>
                <div className="liveNameDetail">Años de vida</div>
-               <div>{raceDetails[0].life_span}</div>
+               <div className="liveDetail">{raceDetails[0].life_span}</div>
            
            </div>  
         

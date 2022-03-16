@@ -55,7 +55,7 @@
     font-style: Trebuchet;
     font-weight: 600;
     font-size: 1.7em;
-    line-height : 15px; 
+    line-height : 30px; 
 }
 
 .pesoNameDetail {
@@ -70,24 +70,20 @@
     font-weight: 760;
     font-size: 2em;
 }
-/* todavia este no está  */
+
 .pesoDetail {
     position: relative;
-    bottom: 55vh;
-    left: 7vw;
-    background-color: rgb(134, 31, 31);
-    height: 13vh;
-    width: 40vw;
+    bottom: 56vh;
+    right: 36vw;
     color: rgb(62, 62, 62);
     font-style: Trebuchet;
     font-weight: 600;
-    font-size: 1.7em;
-    line-height : 15px; 
+    font-size: 2em;
 }
 
 .alturaNameDetail {
     position: relative;
-    bottom:65.2vh;
+    bottom:67.55vh;
     left: 20vw;
     background-color: rgb(131,200, 151);
     height: 5vh;
@@ -97,23 +93,19 @@
     font-weight: 760;
     font-size: 2em;
 }
-/* todavia este no está  */
+
 .alturaDetail {
     position: relative;
-    bottom: 55vh;
-    left: 7vw;
-    background-color: rgb(134, 31, 31);
-    height: 13vh;
-    width: 40vw;
+    bottom: 65.5vh;
+    right: 22vw;
     color: rgb(62, 62, 62);
     font-style: Trebuchet;
     font-weight: 600;
-    font-size: 1.7em;
-    line-height : 15px; 
+    font-size: 2em;
 }
 .liveNameDetail {
     position: relative;
-    bottom:72.5vh;
+    bottom:77.1vh;
     left: 33.5vw;
     background-color: rgb(144,91, 166);
     height: 5vh;
@@ -123,17 +115,13 @@
     font-weight: 760;
     font-size: 2em;
 }
-/* todavia este no está  */
+
 .liveDetail {
     position: relative;
-    bottom: 55vh;
-    left: 7vw;
-    background-color: rgb(134, 31, 31);
-    height: 13vh;
-    width: 40vw;
+    bottom: 75vh;
+    right: 9vw;
     color: rgb(62, 62, 62);
     font-style: Trebuchet;
     font-weight: 600;
-    font-size: 1.7em;
-    line-height : 15px; 
+    font-size: 2em;   
 }
