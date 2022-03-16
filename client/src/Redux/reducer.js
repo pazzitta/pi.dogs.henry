@@ -9,8 +9,9 @@ const rootReducer =(state= initialState, action) => {
         case GET_ALL_RACE:
             return {
                 ...state,
-                races: action.payload
+                races: action.payload //en mi estado races (que está vacío en principio) mandá todo lo que te mande mi acción races
             }
+            default: return state
     }
 }
 

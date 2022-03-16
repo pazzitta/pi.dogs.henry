@@ -1,7 +1,7 @@
 .buttonCreate {
     position: relative;
-    bottom: 9.8vw;
-    right: 2.5vw;
+    bottom: 13.5vw;
+    right: 0vw;
     background-image: url("../../../Imagenes/ImgPag/Boton\ Volver\ ruta\ creacion.png");
     background-repeat:no-repeat;
     background-color: transparent;
@@ -15,8 +15,8 @@
 }
 .textCrear {
     position: relative;
-    bottom: 16.4vw;
-    right: 2.9vw;
+    bottom: 20.3vw;
+    right: 0.5vw;
     color: #2A2A2A;
     /* FALTA AGREGAR LA FUENTE, VER COMO SE HACE Y HACERLO */
     font-style: trebuchet;
@@ -27,12 +27,77 @@
 
 .textNR {
     position: relative;
-    bottom: 17.4vw;
-    right: 2.9vw;
+    bottom: 21.4vw;
+    right: 0.2vw;
     color: #2A2A2A;
     /* FALTA AGREGAR LA FUENTE, VER COMO SE HACE Y HACERLO */
     font-style: trebuchet;
     font-weight: 700;
     font-size: 2rem;  
+    cursor: url("../../../Imagenes/ImgPag/pointer3.png"), pointer;
+}
+
+.ubicTodos {
+    position: relative;
+    bottom: 16vw;
+}
+
+.ordenalf {
+    position: relative;
+    right: 15vw;
+    background-color: rgb(239 ,46 , 149);
+    border: none;
+    border-radius: 1vh;
+    width: 13vw;
+    height: 5vh;
+    color: rgb(255, 255, 255);
+    font-style: trebuchet;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: url("../../../Imagenes/ImgPag/pointer3.png"), pointer;
+}
+
+.peso {
+    position: relative;
+    right: 10vw;
+    background-color: rgb(20 ,105 , 152);
+    border: none;
+    border-radius: 1vh;
+    width: 13vw;
+    height: 5vh;
+    color: rgb(255, 255, 255);
+    font-style: trebuchet;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: url("../../../Imagenes/ImgPag/pointer3.png"), pointer;
+}
+
+.temperamentofil {
+    position: relative;
+    left: 10vw;
+    background-color: rgb(202 ,39 , 42);
+    border: none;
+    border-radius: 1vh;
+    width: 13vw;
+    height: 5vh;
+    color: rgb(255, 255, 255);
+    font-style: trebuchet;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: url("../../../Imagenes/ImgPag/pointer3.png"), pointer;
+}
+
+.razafil {
+    position: relative;
+    left: 15vw;
+    background-color: rgb(238 ,99 ,71);
+    border: none;
+    border-radius: 1vh;
+    width: 13vw;
+    height: 5vh;
+    color: rgb(255, 255, 255);
+    font-style: trebuchet;
+    font-weight: 600;
+    font-size: 1rem;
     cursor: url("../../../Imagenes/ImgPag/pointer3.png"), pointer;
 }

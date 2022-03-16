@@ -1,5 +1,5 @@
 import React from "react";
-import "./CardS.css";
+import "./Cards.css";
 
 // let prevId = 1;
 

@@ -10,7 +10,7 @@ export default function BarraSup () {
             <div >
                 <nav className="barra">
                 <Link to='/home' id="click">
-                  <button>hola</button>
+                  <button className="botonName"></button>
                 </Link>
                 </nav>    
             </div>

@@ -1,9 +1,23 @@
 .barra {
     position: relative;
-    background-image: url("../../Imagenes/ImgPag/Nav.jpg");
+    background-image: url("../../Imagenes/ImgPag/barra.jpg");
     background-repeat: no-repeat;
     background-position: center;
     width: 100vw;
     height: 20vh;
     background-size: 100%;
+ }
+ .botonName {
+    position: relative;
+    right: 38vw;
+    top: 1vh;
+    background-image: url("../../Imagenes/ImgPag/name.png");
+    background-repeat:no-repeat;
+    background-color: transparent;
+    height: 19vh;
+    width: 18vw;
+    background-size: cover;
+    background-position:center;
+    border: none;
+    cursor: url("../../Imagenes/ImgPag/pointer3.png"), pointer;
  }
