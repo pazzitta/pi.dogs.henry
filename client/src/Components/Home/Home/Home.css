@@ -13,23 +13,37 @@
     cursor: url("../../../Imagenes/ImgPag/pointer3.png"), pointer;
    
 }
+
+.sinlinea {
+    text-decoration: none;
+}
+
 .textCrear {
     position: relative;
     bottom: 20.3vw;
-    right: 0.5vw;
+    left: 44vw;
     color: #2A2A2A;
+    background-color: rgb(255, 255, 255);
+    background-color: transparent;
+    width: 10vw;
+    height: 5vh;
     /* FALTA AGREGAR LA FUENTE, VER COMO SE HACE Y HACERLO */
     font-style: trebuchet;
     font-weight: 800;
     font-size: 2.6rem;  
     cursor: url("../../../Imagenes/ImgPag/pointer3.png"), pointer;
+   
 }
 
 .textNR {
     position: relative;
-    bottom: 21.4vw;
-    right: 0.2vw;
+    bottom: 20.7vw;
+    left: 44vw;
     color: #2A2A2A;
+    background-color: rgb(58, 112, 112);
+    background-color: transparent;
+    width: 10vw;
+    height: 4vh;
     /* FALTA AGREGAR LA FUENTE, VER COMO SE HACE Y HACERLO */
     font-style: trebuchet;
     font-weight: 700;

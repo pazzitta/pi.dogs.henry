@@ -23,14 +23,14 @@ useEffect(() => {
            <BarraSup/>  
            <SearchBar/>  
            <div>
-               {/* HAY UN TEMA CON EL CLICK, SE SUPERPONENE LOS OTROS DIV Y NO REDIRIJE EN TODOS LADOS DONDE HACÉS CLICK */}
-              <Link to='/create' id="click">
+        
+              <Link className="sinlinea" to='/create' id="click">
                  <button className="buttonCreate"></button>
-              </Link>
                  <div className="textCrear">CREAR</div>
                  <div className="textNR">nueva raza</div>
+              </Link>
+                 
             </div>
-            <div> probando push</div>
             
             <div className="ubicTodos">
             <select className="ordenalf">

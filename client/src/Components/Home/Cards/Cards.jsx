@@ -30,7 +30,9 @@ export default function Cards () {
     }, [dispatch]) //esta última parate es para que no se genere un bucle infinito de llamados
 
     return (
-        <div>
+       
+       <div>
+           
             <div className="ordenCards">
             {estadoCard.length && estadoCard.map( (dogRace) => {
                    return (
@@ -42,6 +44,7 @@ export default function Cards () {
                    )}               
                )}           
             </div>
+       
         </div>
         
     );
