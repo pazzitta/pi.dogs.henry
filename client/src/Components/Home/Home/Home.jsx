@@ -30,6 +30,7 @@ useEffect(() => {
                  <div className="textCrear">CREAR</div>
                  <div className="textNR">nueva raza</div>
             </div>
+            <div> probando push</div>
             
             <div className="ubicTodos">
             <select className="ordenalf">
