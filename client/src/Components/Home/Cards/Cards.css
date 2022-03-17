@@ -1,14 +1,15 @@
 .boxC {
     position: relative;
     bottom: 25vh;
-    background-color:white;
-    box-shadow : 3px 2px 2px rgba(42, 42, 42, 0.50);
+    background-color:rgb(255, 255, 255);
+    box-shadow : 4px 3px 3px rgba(42, 42, 42, 0.40);
     height: 45vh;
     width: 30vw;
     border-radius: 10px;
     text-align: center;
     margin-bottom: 2em;
     margin-left: 2rem ;
+    cursor: url("../../../Imagenes/ImgPag/pointer3.png"), pointer;
 }
 
 .box2C {
@@ -16,7 +17,7 @@ position: relative;
 bottom: 16vh;
 left: 1vw;
 background-color:rgb(255, 255, 255);
-height: 37vh;
+height: 25vh;
 width: 13vw;
 text-align: center;
 margin-bottom: 2em;  
@@ -24,25 +25,32 @@ margin-bottom: 2em;
 .imageC{
 position: relative;
 left: 15vw;
-top: 12vh;
+top: 18vh;
 display: flex;
-height: 175px;
-width: 175px;
+
+}
+.imstam {
+    height: 190px;
+    width: 260px;
 }
 
 .nombreC {
 position: relative;
-left: 8vw;
+bottom:18vh;
+left: 5vw;
 color: rgb(62, 62, 62);
+background-color: rgb(255, 255, 255);
+height: 12vh;
+width: 20vw;
 font-style: Trebuchet;
 font-weight: 760;
-font-size: 2em;
-line-height : 30px;  
+font-size: 3em;
+line-height : 40px;  
 }
 .temperamentoC {
 position: relative;
-left: 1vw;
-top: 10vh;
+
+top: 4vh;
 color: rgb(42, 42, 42);
 font-style: Trebuchet;
 font-weight: 600;
@@ -51,15 +59,13 @@ line-height : 19px;
 }
 .temperamentoCName {
     position: relative;
-    bottom: 3vh;
-    /* left: 1vw; */
+    bottom: 2vh;
     font-weight: 700;
     font-size: 1.5rem;
 }
 .pesoC {
     position: relative;
-    left: 1vw;
-    top: 17vh;
+    top: 9vh;
     color: rgb(42, 42, 42);
     font-style: Trebuchet;
     font-weight: 600;
@@ -69,7 +75,6 @@ line-height : 19px;
 .pesoCName {
         position: relative;
         bottom: 2vh;
-        /* left: 1vw; */
         font-weight: 700;
         font-size: 1.5rem;
 }
