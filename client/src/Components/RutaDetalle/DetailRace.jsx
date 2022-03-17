@@ -6,7 +6,6 @@ import { getRaceDetail } from "../../Redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 
-//TENGO QUE LIMITAR LA FOTO A UN TAMAÑO! SINO HACE LO MISMO QUE CON LAS CARDS! Y VER PORQUÉ ESTÁ TAN GRANDELA PÁGINA, EL TOTAL DE ELLA!
 export default function DetailRace (props) {
 
 const dispatch = useDispatch();

@@ -1,40 +1,44 @@
 .buttonVolverD {
     position: relative;
-    bottom: 9.8vw;
-    left:35vw;
+    top: 28vw;
+    right:22vw;
     background-image: url("../../Imagenes/ImgPag/Boton\ Volver\ ruta\ creacion.png");
     background-repeat:no-repeat;
     background-color: transparent;
-    height: 19vh;
-    width: 19vw;
+    height: 14vh;
+    width: 14vw;
     background-size: cover;
     background-position:center;
     border: none;
     cursor: url("../../Imagenes/ImgPag/pointer3.png"), pointer;
     font-style: trebuchet;
     font-weight: 800;
-    font-size: 2.6rem;  
+    font-size: 2rem;  
 }
 
 .imageDetail {
     position: relative;
     bottom:10vh;
     left: 20vw;
-    width: 40vw;
+    width: 720px;
+    height: 504px;
 }
 .nameDetail {
     position: relative;
-    bottom:70vh;
-    right:22vw;
+    bottom:63vh;
+    left: 9vw;
+    background-color: rgb(255, 255, 255);
+    height: 12vh;
+    width: 38vw;
     color: rgb(42, 42, 42);
     font-style: Trebuchet;
     font-weight: 900;
     font-size: 3.5em;
-    line-height : 30px; 
+    line-height : 45px; 
 }
 .tempNameDetail {
     position: relative;
-    bottom:60vh;
+    bottom:56vh;
     left: 12vw;
     background-color: rgb(202, 39, 42);
     height: 5vh;
@@ -46,7 +50,7 @@
 }
 .tempDetail {
     position: relative;
-    bottom: 56vh;
+    bottom: 51vh;
     left: 7vw;
     background-color: rgb(255, 255, 255);
     height: 12vh;
@@ -60,7 +64,7 @@
 
 .pesoNameDetail {
     position: relative;
-    bottom:58vh;
+    bottom:52vh;
     left: 7vw;
     background-color: rgb(20,105, 152);
     height: 5vh;
@@ -73,7 +77,7 @@
 
 .pesoDetail {
     position: relative;
-    bottom: 56vh;
+    bottom: 50vh;
     right: 36vw;
     color: rgb(62, 62, 62);
     font-style: Trebuchet;
@@ -83,7 +87,7 @@
 
 .alturaNameDetail {
     position: relative;
-    bottom:67.55vh;
+    bottom:61.55vh;
     left: 20vw;
     background-color: rgb(131,200, 151);
     height: 5vh;
@@ -96,7 +100,7 @@
 
 .alturaDetail {
     position: relative;
-    bottom: 65.5vh;
+    bottom: 59.5vh;
     right: 22vw;
     color: rgb(62, 62, 62);
     font-style: Trebuchet;
@@ -105,7 +109,7 @@
 }
 .liveNameDetail {
     position: relative;
-    bottom:77.1vh;
+    bottom:71.2vh;
     left: 33.5vw;
     background-color: rgb(144,91, 166);
     height: 5vh;
@@ -118,7 +122,7 @@
 
 .liveDetail {
     position: relative;
-    bottom: 75vh;
+    bottom: 69vh;
     right: 9vw;
     color: rgb(62, 62, 62);
     font-style: Trebuchet;
