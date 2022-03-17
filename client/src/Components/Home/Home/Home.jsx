@@ -4,8 +4,20 @@ import BarraSup from "../../BarraPinta/BarraSup";
 import SearchBar from "../../SearchBar/SearchBar";
 import Cards from "../Cards/Cards";
 import './Home.css'
+import { getAllTemperaments } from "../../../Redux/actions";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
 
 export default function Homepage () {
+
+const dogtemperaments = useSelector ((state) => state.temperaments);
+const dispatch = useDispatch ();
+
+useEffect(() => {
+    dispatch(getAllTemperaments())
+ },[dispatch])
+
+
     return (
         <div>
            <BarraSup/>  
@@ -31,8 +43,12 @@ export default function Homepage () {
                 <option>Max-Min</option>
             </select>  
             <select className="temperamentofil">
-                <option disabled selected>Filtrar por temperamento</option> 
-                {/* ACA HAY QUE TRAER TODOS LOS TEMPERAMENTOS */}
+            <option disabled selected>Filtrar por temperamento</option>
+            {dogtemperaments.map((dt)=>(
+                              <option value={dt.name}>{dt.name}</option>
+                           ))}
+                {/* <option disabled selected>Filtrar por temperamento</option> 
+                ACA HAY QUE TRAER TODOS LOS TEMPERAMENTOS */}
             </select>
             <select className="razafil">
                 <option disabled selected>Filtrar por raza</option>

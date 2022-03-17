@@ -1,9 +1,10 @@
-import { GET_ALL_RACE, GET_DETAIL } from "./actions";
+import { GET_ALL_RACE, GET_DETAIL, GET_TEMPERAMENTS } from "./actions";
 
 const initialState = {
     races: [],
     raceAll: [],
     raceDetail: [],
+    temperaments: [],
 };
 
 const rootReducer =(state= initialState, action) => {
@@ -18,6 +19,11 @@ const rootReducer =(state= initialState, action) => {
             return {
                 ...state,
                 raceDetail: action.payload
+            };
+        case GET_TEMPERAMENTS:
+            return {
+                ...state,
+                temperaments: action.payload
             };
         default: return {...state}
     }

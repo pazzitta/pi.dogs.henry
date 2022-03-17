@@ -1,8 +1,10 @@
 // const axios = require ('axios');
 export const GET_ALL_RACE = 'GET_ALL_RACE';
-export const GET_DETAIL = 'GET_DETAIL'
+export const GET_DETAIL = 'GET_DETAIL';
+export const GET_TEMPERAMENTS = 'GET_TEMPERAMENTS'
 
 const RUTA_GET = "http://localhost:3001/dogs/get";
+const RUTA_GET_TEMPERAMENTS = "http://localhost:3001/temperaments/get"
 
 export const getAllRace = () => async dispatch => {
    return await fetch(RUTA_GET)
@@ -28,3 +30,10 @@ export const getRaceDetail = (payload) => async dispatch => {
 //        }
 //    }
 // }
+
+export const getAllTemperaments = () => async dispatch => {
+   return await fetch(RUTA_GET_TEMPERAMENTS)
+      .then(respose => respose.json())
+      .then (json => dispatch ({type:GET_TEMPERAMENTS, payload: json}))
+      
+}
