@@ -1,7 +1,9 @@
 // const axios = require ('axios');
 export const GET_ALL_RACE = 'GET_ALL_RACE';
 export const GET_DETAIL = 'GET_DETAIL';
-export const GET_TEMPERAMENTS = 'GET_TEMPERAMENTS'
+export const GET_TEMPERAMENTS = 'GET_TEMPERAMENTS';
+export const ORDER_BY_NAME = 'ORDER_BY_NAME';
+export const ORDER_BY_WEIGHT = 'ORDER_BY_WEIGHT' 
 
 const RUTA_GET = "http://localhost:3001/dogs/get";
 const RUTA_GET_TEMPERAMENTS = "http://localhost:3001/temperaments/get"
@@ -37,3 +39,17 @@ export const getAllTemperaments = () => async dispatch => {
       .then (json => dispatch ({type:GET_TEMPERAMENTS, payload: json}))
       
 }
+
+export const orderByName = (payload) => {
+ return {
+    type: ORDER_BY_NAME,
+    payload
+ }
+} 
+
+export const orderByWeight = (payload) => {
+   return {
+      type: ORDER_BY_WEIGHT,
+      payload
+   }
+  } 

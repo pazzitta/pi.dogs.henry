@@ -4,12 +4,13 @@ import BarraSup from "../../BarraPinta/BarraSup";
 import SearchBar from "../../SearchBar/SearchBar";
 import Cards from "../Cards/Cards";
 import './Home.css'
-import { getAllTemperaments } from "../../../Redux/actions";
+import { getAllTemperaments,orderByName, orderByWeight } from "../../../Redux/actions";
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function Homepage () {
 
+//traer temperamentos
 const dogtemperaments = useSelector ((state) => state.temperaments);
 const dispatch = useDispatch ();
 
@@ -17,6 +18,24 @@ useEffect(() => {
     dispatch(getAllTemperaments())
  },[dispatch])
 
+//sort Alfabético
+const [orden, setOrden] = useState('')
+const [page, setPage] = useState(1);
+
+function handleSortName (e) { ///ME DICE QUE LA "VALUE" ES UNDEFINED
+    e.preventDefault ();
+    dispatch (orderByName (e.target.value));
+    setPage (1);
+    setOrden (`Order ${e.traget.value}`);
+}
+
+//sort weight
+function handleWeightSort(e) {
+    e.preventDefault();                
+    dispatch(orderByWeight(e.target.value));
+    setPage(1);
+    setOrden(`Order ${e.target.value}`);
+ }
 
     return (
         <div>
@@ -33,29 +52,33 @@ useEffect(() => {
             </div>
             
             <div className="ubicTodos">
-            <select className="ordenalf">
-                <option disabled selected>Filtrar por orden alfabético</option>
-                <option>A-Z</option>
-                <option>Z-A</option>
-            </select>
-            <select className="peso">
-                <option disabled selected>Filtrar por peso</option>
-                <option>Min-Max</option>
-                <option>Max-Min</option>
-            </select>  
-            <select className="temperamentofil">
-            <option disabled selected>Filtrar por temperamento</option>
-            {dogtemperaments.map((dt)=>(
+            
+            {/* HACE LO MISMO QUE ANTES, LOS ORDENA CON OTRO CAMBIO! Lo voy a tener que hacer desde el back */}
+               <select onChange={e => handleSortName (e)} className="ordenalf">
+                  <option disabled selected>Ordenar alfabéticamente</option>
+                  <option value= 'asc'>A-Z</option>
+                  <option value= 'desc'>Z-A</option>
+               </select>
+            
+               <select  onChange={handleWeightSort}className="peso">
+                  <option disabled selected>Filtrar por peso</option>
+                  <option value= 'asc'>Min-Max</option>
+                  <option value='desc'>Max-Min</option>
+               </select>  
+            
+               <select className="temperamentofil">
+                  <option disabled selected>Filtrar por temperamento</option>
+                  {dogtemperaments.map((dt)=>(
                               <option value={dt.name}>{dt.name}</option>
                            ))}
-                {/* <option disabled selected>Filtrar por temperamento</option> 
-                ACA HAY QUE TRAER TODOS LOS TEMPERAMENTOS */}
-            </select>
-            <select className="razafil">
-                <option disabled selected>Filtrar por raza</option>
-                <option>Existentes</option>
-                <option>Creadas</option>
-            </select>           
+                </select>
+            
+                <select className="razafil">
+                   <option disabled selected>Filtrar por raza</option>
+                   <option>Existentes</option>
+                   <option>Creadas</option>
+                </select>           
+            
             </div>   
            
             <div>
