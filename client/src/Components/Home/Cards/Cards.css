@@ -91,3 +91,21 @@ line-height : 19px;
 .sinlinea {
     text-decoration: none;
 }
+
+.paginado {
+    position: relative;
+    left: 27vw;
+    top: 174vh;
+    display: flex;
+    list-style: none
+    
+}
+
+.nums {
+    margin-left: 14px;
+    color: rgb(42, 42, 42);
+    font-style: trebuchet;
+    font-weight: 600;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
