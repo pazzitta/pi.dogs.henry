@@ -1,4 +1,4 @@
-import { GET_ALL_RACE, GET_DETAIL, GET_TEMPERAMENTS, ORDER_BY_NAME, ORDER_BY_WEIGHT } from "./actions";
+import { GET_ALL_RACE, GET_DETAIL, GET_TEMPERAMENTS, ORDER_BY_NAME, ORDER_BY_WEIGHT,FILTER_BY_TEMPERAMENTS } from "./actions";
 
 const initialState = {
     races: [],
@@ -56,11 +56,26 @@ const rootReducer =(state= initialState, action) => {
             if (b.weight[0] > a.weight[0])return 1;
             return 0;
          })
-
-         return {
+        return {
             ...state,
             races: weightSort
          };
+         case FILTER_BY_TEMPERAMENTS:
+        const raceAll = state.raceAll;
+        const filterTemper =
+        action.payload === "All"
+          ? raceAll
+          : raceAll.filter(
+              (el) =>
+                el.temperament &&
+                el.temperament.split(", ").find((e) => e === action.payload)
+            );
+            console.log (filterTemper)
+            return { 
+               ...state, 
+              recipes: filterTemper
+           };
+           
         default: return {...state}
     }
 }

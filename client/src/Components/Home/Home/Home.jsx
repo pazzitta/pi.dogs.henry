@@ -4,7 +4,7 @@ import BarraSup from "../../BarraPinta/BarraSup";
 import SearchBar from "../../SearchBar/SearchBar";
 import Cards from "../Cards/Cards";
 import './Home.css'
-import { getAllTemperaments,orderByName, orderByWeight } from "../../../Redux/actions";
+import { getAllTemperaments,orderByName, orderByWeight, filterRaceByTemp } from "../../../Redux/actions";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 
@@ -37,6 +37,13 @@ function handleWeightSort(e) {
     setOrden(`Order ${e.target.value}`);
  }
 
+ //teperaments
+ function handleFilterTemperaments (e) {  //los fitra pero no hace el cambio!
+   console.log(e)
+   dispatch(filterRaceByTemp(e.target.value))
+   setPage(1)
+}
+
     return (
         <div>
            <BarraSup/>  
@@ -66,10 +73,10 @@ function handleWeightSort(e) {
                   <option value='desc'>Max-Min</option>
                </select>  
             
-               <select className="temperamentofil">
-                  <option disabled selected>Filtrar por temperamento</option>
+               <select onChange={handleFilterTemperaments}  className="temperamentofil">
+                  <option value='All' disabled selected>Filtrar por temperamento</option>
                   {dogtemperaments.map((dt)=>(
-                              <option value={dt.name}>{dt.name}</option>
+                              <option value={dt.name} key= {dt.id}>{dt.name}</option>
                            ))}
                 </select>
             
