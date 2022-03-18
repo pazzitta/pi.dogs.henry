@@ -4,7 +4,8 @@ export const GET_DETAIL = 'GET_DETAIL';
 export const GET_TEMPERAMENTS = 'GET_TEMPERAMENTS';
 export const ORDER_BY_NAME = 'ORDER_BY_NAME';
 export const ORDER_BY_WEIGHT = 'ORDER_BY_WEIGHT';
-export const FILTER_BY_TEMPERAMENTS = 'FILTER_BY_TEMPERAMENTS'
+export const FILTER_BY_TEMPERAMENTS = 'FILTER_BY_TEMPERAMENTS';
+export const SEARCH_FOR_NAME = 'SEARCH_FOR_NAME'
 
 const RUTA_GET = "http://localhost:3001/dogs/get";
 const RUTA_GET_TEMPERAMENTS = "http://localhost:3001/temperaments/get"
@@ -22,17 +23,16 @@ export const getRaceDetail = (payload) => async dispatch => {
    .then (respose => respose.json())
    .then (json => dispatch ({type: GET_DETAIL, payload: json} ))
 }
-// export function getRecipeDetail (payload) {
-//    console.log(payload)
-//    return async function (dispatch) {
-//        try {
-//            var json = await axios.get (`http://localhost:3002/Recipe/${payload}`);
-//            return dispatch ({type: GET_DETAIL, payload: json.data})
-//        } catch (error) {
-//            console.log(error)
-//        }
-//    }
-// }
+
+export const searchForName = (payload) => async dispatch => {
+   try {
+      return await fetch(`${RUTA_GET}/?name=${payload}`)
+      .then (respose => respose.json())
+      .then (json => dispatch ({type: SEARCH_FOR_NAME, payload: json} ))
+  } catch {
+      return alert ('No se encontró la raza')
+   }
+}
 
 export const getAllTemperaments = () => async dispatch => {
    return await fetch(RUTA_GET_TEMPERAMENTS)
@@ -61,3 +61,5 @@ export const orderByWeight = (payload) => {
       payload
    }
   } 
+
+  

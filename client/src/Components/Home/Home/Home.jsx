@@ -4,10 +4,13 @@ import BarraSup from "../../BarraPinta/BarraSup";
 import SearchBar from "../../SearchBar/SearchBar";
 import Cards from "../Cards/Cards";
 import './Home.css'
-import { getAllTemperaments,orderByName, orderByWeight, filterRaceByTemp } from "../../../Redux/actions";
+import { getAllTemperaments,orderByName, orderByWeight, filterRaceByTemp, getAllRace } from "../../../Redux/actions";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 
+//PROBLEMAS: NO ORDENA POR ORDEN ALFABÉTICO, LOS DEJÓ ORDENADOS DE A-Z Y NO COMO LOS TRAÍA, NO ORDENA POR TEMPERAMENTOS, EL FILTRO POR PESO ESTÁ MAL...
+//tiene que borrar lo que puse en el name despues de buscar!
+//hay un tema con la caja en el botón de recarga
 export default function Homepage () {
 
 //traer temperamentos
@@ -44,10 +47,22 @@ function handleWeightSort(e) {
    setPage(1)
 }
 
+//click recarga
+function handleClick(e) {
+   e.preventDefault();
+   dispatch(getAllRace());
+   setPage(1);
+}
+
     return (
         <div>
            <BarraSup/>  
-           <SearchBar/>  
+           <SearchBar/>
+
+           <div>
+              <button onClick={handleClick} className="buttonRecarga">Cargar todas la razas</button>
+           </div>
+
            <div>
         
               <Link className="sinlinea" to='/create' id="click">

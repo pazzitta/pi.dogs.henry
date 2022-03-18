@@ -1,4 +1,4 @@
-import { GET_ALL_RACE, GET_DETAIL, GET_TEMPERAMENTS, ORDER_BY_NAME, ORDER_BY_WEIGHT,FILTER_BY_TEMPERAMENTS } from "./actions";
+import { GET_ALL_RACE, GET_DETAIL, GET_TEMPERAMENTS, ORDER_BY_NAME, ORDER_BY_WEIGHT,FILTER_BY_TEMPERAMENTS,SEARCH_FOR_NAME } from "./actions";
 
 const initialState = {
     races: [],
@@ -24,6 +24,11 @@ const rootReducer =(state= initialState, action) => {
             return {
                 ...state,
                 temperaments: action.payload
+            };
+        case SEARCH_FOR_NAME:
+            return {
+                ...state,
+                races: action.payload
             };
         case ORDER_BY_NAME:
         let sortByName = state.races;
