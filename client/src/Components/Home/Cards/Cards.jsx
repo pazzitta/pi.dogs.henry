@@ -6,9 +6,9 @@ import "./Cards.css";
 import Paginated from "../../Paginado/Paginated";
 import { Link } from "react-router-dom";
 
-//FALTA PAGINADO Y TERMINAR DE ARREGLAR LAS CARDS
+//tengo que ponerle más estilos al paginado y hacer que no quede abajo cuando se achiqte la pantalla(lo arreglo o lo pongo arriba, 
+//según el tiempo disponibles)
 
-// let prevId = 1;  key={prevId++} 
 
 export default function Cards () {
     const dispatch = useDispatch(); //es para usas esa cosntante e ir despachando mis acciones, envía la info al reducer
@@ -49,4 +49,3 @@ export default function Cards () {
         
     );
 };
-//creo que este es el map que debo modificar
