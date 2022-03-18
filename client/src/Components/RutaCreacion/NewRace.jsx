@@ -30,34 +30,34 @@ useEffect(() => {
            
            <div>
               <form className="fondoGris">
-                  <div>CREA TU PROPIA RAZA</div>
+                  <div className="tituloCrear">CREA TU PROPIA RAZA</div>
                   
-                  <label>Nombre</label>
-                  <input placeholder="nombre"/>
+                  <label className="textName">Nombre</label>
+                  <input className="barraName" placeholder="nombre"/>
                   
-                  <label>Altura</label>
+                  <label className="textAltura">Altura</label>
                   <div>
-                     <input placeholder="min"/>
-                     <input placeholder="max"/>
+                     <input className="barraAlturaMin" placeholder="min"/>
+                     <input className="barraAlturaMax" placeholder="max"/>
                   </div>
 
-                  <label>Peso</label>
-                  <div>
-                     <input placeholder="min"/>
-                     <input placeholder="max"/>
+                  <label className="textPeso">Peso</label>
+                  <div >
+                     <input className="barraPesoMin" placeholder="min"/>
+                     <input className="barraPesoMax" placeholder="max"/>
                   </div>
                   
-                  <label>Años de vida</label>
-                  <input placeholder="live"/>
+                  <label className="textLife">Años de vida</label>
+                  <input className="barraLife" placeholder="life"/>
 
-                  <select >
+                  <select className="selecTemp" >
                      <option disabled selected>Elegir temperamento/s</option>
                         {dogtemperaments.map((dt)=>(
                               <option value={dt.name}>{dt.name}</option>
                            ))}
                   </select>
 
-                  <button>CREAR</button>
+                  <button className="crear">CREAR</button>
                   
               </form>
            </div>

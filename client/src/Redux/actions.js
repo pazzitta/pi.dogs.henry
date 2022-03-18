@@ -28,7 +28,11 @@ export const getAllTemperaments = () => async dispatch => {
 }
 
 export const searchForName = (payload) => async dispatch => {
-   return await fetch (`${RUTA_GET}/?name=${payload}`)
-   .then (respose => respose.json())
-   .then (json => dispatch ({type: SEARCH_FOR_NAME, payload:json}))
+  try {
+     return await fetch (`${RUTA_GET}/?name=${payload}`)
+     .then (respose => respose.json())
+     .then (json => dispatch ({type: SEARCH_FOR_NAME, payload:json}))
+  }catch {
+     return alert ('No se encontró la raza,intente con otra')
+  }
 }
