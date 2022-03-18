@@ -4,6 +4,7 @@ import { searchForName } from "../../Redux/actions";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 
+//FALTA BOTÓN PARA REFRESCAR LA PÁGINA
 
 export default function SearchBar () {
 

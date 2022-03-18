@@ -15,3 +15,26 @@
     font-weight: 800;
     font-size: 2.6rem;  
 }
+
+.imageF {
+    position: relative;
+    left: 25vw;
+    bottom: 10vh;
+    height: 65vh;
+    width: 45vw;  
+    background-image: url('../../Imagenes/ImgPag/Fondo\ ruta\ de\ creacion.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    border-radius: 60px;
+}
+
+.fondoGris {
+    position: relative;
+    left: 190px;
+    top: 43px;
+    height: 51vh;
+    width: 30vw;
+    background-color: rgba(42, 42, 42, 0.8);
+    border-radius: 30px;
+}

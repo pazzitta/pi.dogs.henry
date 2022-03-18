@@ -48,8 +48,6 @@ useEffect(() => {
             {dogtemperaments.map((dt)=>(
                               <option value={dt.name}>{dt.name}</option>
                            ))}
-                {/* <option disabled selected>Filtrar por temperamento</option> 
-                ACA HAY QUE TRAER TODOS LOS TEMPERAMENTOS */}
             </select>
             <select className="razafil">
                 <option disabled selected>Filtrar por raza</option>
