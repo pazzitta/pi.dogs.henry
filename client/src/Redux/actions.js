@@ -1,11 +1,7 @@
 // const axios = require ('axios');
 export const GET_ALL_RACE = 'GET_ALL_RACE';
 export const GET_DETAIL = 'GET_DETAIL';
-export const GET_TEMPERAMENTS = 'GET_TEMPERAMENTS';
-export const ORDER_BY_NAME = 'ORDER_BY_NAME';
-export const ORDER_BY_WEIGHT = 'ORDER_BY_WEIGHT';
-export const FILTER_BY_TEMPERAMENTS = 'FILTER_BY_TEMPERAMENTS';
-export const SEARCH_FOR_NAME = 'SEARCH_FOR_NAME'
+export const GET_TEMPERAMENTS = 'GET_TEMPERAMENTS'
 
 const RUTA_GET = "http://localhost:3001/dogs/get";
 const RUTA_GET_TEMPERAMENTS = "http://localhost:3001/temperaments/get"
@@ -23,16 +19,17 @@ export const getRaceDetail = (payload) => async dispatch => {
    .then (respose => respose.json())
    .then (json => dispatch ({type: GET_DETAIL, payload: json} ))
 }
-
-export const searchForName = (payload) => async dispatch => {
-   try {
-      return await fetch(`${RUTA_GET}/?name=${payload}`)
-      .then (respose => respose.json())
-      .then (json => dispatch ({type: SEARCH_FOR_NAME, payload: json} ))
-  } catch {
-      return alert ('No se encontró la raza')
-   }
-}
+// export function getRecipeDetail (payload) {
+//    console.log(payload)
+//    return async function (dispatch) {
+//        try {
+//            var json = await axios.get (`http://localhost:3002/Recipe/${payload}`);
+//            return dispatch ({type: GET_DETAIL, payload: json.data})
+//        } catch (error) {
+//            console.log(error)
+//        }
+//    }
+// }
 
 export const getAllTemperaments = () => async dispatch => {
    return await fetch(RUTA_GET_TEMPERAMENTS)
@@ -40,26 +37,3 @@ export const getAllTemperaments = () => async dispatch => {
       .then (json => dispatch ({type:GET_TEMPERAMENTS, payload: json}))
       
 }
-
-export const orderByName = (payload) => {
- return {
-    type: ORDER_BY_NAME,
-    payload
- }
-} 
-
-export const orderByWeight = (payload) => {
-   return {
-      type: ORDER_BY_WEIGHT,
-      payload
-   }
-  } 
-
-  export const filterRaceByTemp = (payload) => {
-   return {
-      type: FILTER_BY_TEMPERAMENTS,
-      payload
-   }
-  } 
-
-  

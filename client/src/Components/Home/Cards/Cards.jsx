@@ -3,10 +3,10 @@ import Card from "./Card";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllRace } from "../../../Redux/actions";
 import "./Cards.css";
-import Paginated from "../../Paginado/Paginated";
+// import Paginated from "../Paginado/Paginated";
 import { Link } from "react-router-dom";
 
-//FALTAN LOS ESTILOS DEL PAGINADO! y ver como hacer para cuando busco por nombre no me lo deje tan abajo!
+//FALTA PAGINADO Y TERMINAR DE ARREGLAR LAS CARDS
 
 // let prevId = 1;  key={prevId++} 
 
@@ -14,16 +14,16 @@ export default function Cards () {
     const dispatch = useDispatch(); //es para usas esa cosntante e ir despachando mis acciones, envía la info al reducer
     const estadoCard = useSelector(state => state.races); //esta cosntante trae todo lo que está en el estado de races. Ya lo tenemos disponible
 
-    //paginado
-    const [currentPage, setCurrentPage] = useState(1);
-    const[cardsPerPage, setCardsPerPag ] = useState (8);
-    const indexOfLastCards = currentPage * cardsPerPage;
-    const indexOfFirstCards = indexOfLastCards - cardsPerPage;
-    const currentCards = estadoCard.slice(indexOfFirstCards,indexOfLastCards)
+    // //paginado
+    // const [currentPage, setCurrentPage] = useState(1);
+    // const[cardsPerPage, setCardsPerPag ] = useState (9);
+    // const indexOfLastCards = currentPage * cardsPerPage;
+    // const indexOfFirstCards = indexOfLastCards - cardsPerPage;
+    // const currentCards = estadoCard.slice(indexOfFirstCards,indexOfLastCards)
 
-    const paginateds = (pagNumber) => {
-        setCurrentPage(pagNumber)
-    }
+    // const paginateds = (pagNumber) => {
+    //     setCurrentPage(pagNumber)
+    // }
  
     useEffect (()=> {                   //trae del estado las razas cuando el componente se monta
       dispatch (getAllRace())
@@ -32,10 +32,9 @@ export default function Cards () {
     return (
        
        <div>
-           <Paginated cardsPerPage={cardsPerPage} estadoCard= {estadoCard.length} paginateds = {paginateds} />
-            
+           
             <div className="ordenCards">
-            {currentCards.map( (dogRace) => {
+            {estadoCard.length && estadoCard.map( (dogRace) => {
                    return (
                        <div key={dogRace.id} >
                            <Link to= {"/detail/" + dogRace.id} className="sinlinea">

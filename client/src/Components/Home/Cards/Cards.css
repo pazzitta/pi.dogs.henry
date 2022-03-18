@@ -79,12 +79,10 @@ line-height : 19px;
         font-size: 1.5rem;
 }
 .ordenCards {
-        position: relative;
-        bottom: 10vh;
         background-color: rgb(255, 255, 255);
-        background-color: transparent;
         width: 70%;
-        margin-left: 14vw;
+        margin-left: 12vw;
+        margin-top: 0px;
         display: grid;
         grid-template-columns: 700px 80px;
         /* grid-template-rows: 50px 100px 40px 60px; */
@@ -92,23 +90,4 @@ line-height : 19px;
 
 .sinlinea {
     text-decoration: none;
-}
-
-
-.paginado {
-    position: relative;
-    left: 29vw;
-    top: 165vh;
-    display: flex;
-    list-style: none
-    
-}
-
-.nums {
-    margin-left: 14px;
-    color: rgb(42, 42, 42);
-    font-style: trebuchet;
-    font-weight: 600;
-    font-size: 1.2rem;
-    cursor: pointer;
 }
