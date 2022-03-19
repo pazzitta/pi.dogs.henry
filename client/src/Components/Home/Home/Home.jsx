@@ -34,6 +34,8 @@ function handleFilterCreated (e) {
 }
 
 
+
+
     return (
         <div>
            <BarraSup/>  

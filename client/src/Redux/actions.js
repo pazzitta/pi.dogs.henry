@@ -3,7 +3,7 @@ export const GET_DETAIL = 'GET_DETAIL';
 export const GET_TEMPERAMENTS = 'GET_TEMPERAMENTS';
 export const SEARCH_FOR_NAME = 'SEARCH_FOR_NAME';
 export const ORDER_BY_NAME = 'ORDER_BY_NAME';
-export const FILTER_CREATED = 'FILTER_CREATED'
+export const FILTER_CREATED = 'FILTER_CREATED';
 
 const RUTA_GET = "http://localhost:3001/dogs/get";
 const RUTA_GET_TEMPERAMENTS = "http://localhost:3001/temperaments/get"
@@ -54,3 +54,4 @@ export const filterCreated = (payload) => {
       payload
    }
 }
+

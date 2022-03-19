@@ -46,7 +46,7 @@ const getAllTemperaments = async (req, res, netx) => {
         })
     });
     res.send (vertem)
-    console.log(vertem)
+    // console.log(vertem)
   } catch (error) {
       console.log ('no anda getAllTemperaments')
   }
