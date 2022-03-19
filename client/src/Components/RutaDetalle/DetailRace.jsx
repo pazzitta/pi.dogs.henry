@@ -32,7 +32,7 @@ useEffect(() => {
            <div key={id}>
                
                <div >
-                   <img src={raceDetails[0].image} alt="La imagen no se encuentra" className="imageDetail"/>
+                   <img src={raceDetails[0].image? raceDetails[0].image :"https://images.pexels.com/photos/3299905/pexels-photo-3299905.jpeg?cs=srgb&dl=pexels-goochie-poochie-grooming-3299905.jpg&fm=jpg"} alt="La imagen no se encuentra" className="imageDetail"/>
                </div>
                <div className="nameDetail">{raceDetails[0].name}</div>
                <div className="tempNameDetail">Temperamentos</div>

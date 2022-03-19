@@ -4,9 +4,9 @@ import BarraSup from "../../BarraPinta/BarraSup";
 import SearchBar from "../../SearchBar/SearchBar";
 import Cards from "../Cards/Cards";
 import './Home.css'
-import { getAllTemperaments } from "../../../Redux/actions";
+import { getAllTemperaments, orderByName, filterCreated } from "../../../Redux/actions";
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function Homepage () {
 
@@ -16,6 +16,22 @@ const dispatch = useDispatch ();
 useEffect(() => {
     dispatch(getAllTemperaments())
  },[dispatch])
+
+
+const [orden, setOrden] = useState('')
+const [page, setPage] = useState(1);
+
+function handleSortName (e) { 
+    console.log (e)
+    e.preventDefault ();
+    dispatch (orderByName (e.target.value));
+    setPage (1);
+    setOrden (`Ordenado ${e}`); // con el cambio de e.target.value a e solo hace un cambio sin necesidad de otro evento, pero el segundo no lo hace...
+ }
+
+function handleFilterCreated (e) {
+    dispatch(filterCreated (e.target.value))
+}
 
 
     return (
@@ -33,12 +49,12 @@ useEffect(() => {
             </div>
             
             <div className="ubicTodos">
-            <select className="ordenalf">
-                <option disabled selected>Filtrar por orden alfabético</option>
-                <option>A-Z</option>
-                <option>Z-A</option>
+            <select onChange={(e) => handleSortName (e)} className="ordenalf">
+                <option value='All' disabled selected>Filtrar por orden alfabético</option>
+                <option value= 'Asc'>A-Z</option>
+                <option value= 'Desc'>Z-A</option>
             </select>
-            <select className="peso">
+            <select  className="peso">
                 <option disabled selected>Filtrar por peso</option>
                 <option>Min-Max</option>
                 <option>Max-Min</option>
@@ -46,13 +62,13 @@ useEffect(() => {
             <select className="temperamentofil">
             <option disabled selected>Filtrar por temperamento</option>
             {dogtemperaments.map((dt)=>(
-                              <option value={dt.name}>{dt.name}</option>
+                              <option key={dt} value={dt}>{dt}</option>
                            ))}
             </select>
-            <select className="razafil">
-                <option disabled selected>Filtrar por raza</option>
-                <option>Existentes</option>
-                <option>Creadas</option>
+            <select onChange={(e) => handleFilterCreated (e)} className="razafil">
+                <option value='All' disabled selected>Filtrar por raza</option>
+                <option value='Existentes'>Existentes</option>
+                <option value='Creadas'>Creadas</option>
             </select>           
             </div>   
            

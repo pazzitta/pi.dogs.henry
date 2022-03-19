@@ -28,11 +28,27 @@ const getAllDogsApi = async () => {
 
 const getAllDogsDB = async () => {
     try {
-        return await Dog.findAll ({include: Temperament} )
-    }catch (error) {
-        console.log ('Error en getAllDogsDB')
-  }
-};
+        return await Dog.findAll({
+          include: {
+            model: Temperament,
+            attributes: ["name"], //traigo el nombre de los temperamentos
+            through: {
+              attributes: [], //tomo solo lo que queda en el arreglo atributes
+            },
+          },
+        });
+      } catch (error) {
+        console.log("Hubo un error en getDbInfo", error)
+      }
+    };
+
+// const getAllDogsDB = async () => {
+//     try {
+//         return await Dog.findAll ({include: Temperament} )
+//     }catch (error) {
+//         console.log ('Error en getAllDogsDB')
+//   }
+// };
 
 const allInfoApiAndDB = async () => { ///ESTA TENGO QUE USAR PARA LA PRÓXIMA RUTA
    try {

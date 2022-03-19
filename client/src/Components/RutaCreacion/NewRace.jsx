@@ -53,7 +53,7 @@ useEffect(() => {
                   <select className="selecTemp" >
                      <option disabled selected>Elegir temperamento/s</option>
                         {dogtemperaments.map((dt)=>(
-                              <option value={dt.name}>{dt.name}</option>
+                              <option  key={dt} value={dt}>{dt}</option>
                            ))}
                   </select>
 

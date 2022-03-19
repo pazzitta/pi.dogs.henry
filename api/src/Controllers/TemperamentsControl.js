@@ -5,15 +5,19 @@ const {API_KEY1} = process.env
 
 const allTemRep = async () => {
     try {
-        const pedidoApiAll = await axios (`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY1}`);
-        const dataApiAll = await pedidoApiAll.data;
-    
-        if (dataApiAll){
-            let infoApiTemp = dataApiAll?.map (el => {
-                const todosJuntos = el.temperament;
-                return (todosJuntos)
-            })
-            return (infoApiTemp)
+        const allTemperaments = await Temperament.findAll();
+        if (allTemperaments.length === 0) {
+            const pedidoApiAll = await axios (`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY1}`);
+            const dataApiAll = await pedidoApiAll.data;
+        
+            if (dataApiAll){
+                let infoApiTemp = dataApiAll?.map (el => {
+                    const todosJuntos = el.temperament;
+                    return (todosJuntos)
+                })
+                // console.log(infoApiTemp)
+                return (infoApiTemp)
+            }
         }
     } catch (error) {
         console.log ('Error en getAllDogsApi')
@@ -37,14 +41,12 @@ const getAllTemperaments = async (req, res, netx) => {
   try {
     const vertem = await allInArray();
     vertem.map(el => {
-        Temperament.findOrCreate({
+        Temperament.bulkCreate({
             where: { name: el}
         })
     });
-    
-    const serchDb = await Temperament.findAll ()
-    res.send (serchDb)
-    console.log(serchDb)
+    res.send (vertem)
+    console.log(vertem)
   } catch (error) {
       console.log ('no anda getAllTemperaments')
   }
