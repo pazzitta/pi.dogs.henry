@@ -1,4 +1,5 @@
-import { GET_ALL_RACE, GET_DETAIL, GET_TEMPERAMENTS, SEARCH_FOR_NAME,ORDER_BY_NAME_AZ, ORDER_BY_NAME_ZA,FILTER_CREATED } from "./actions";
+import { GET_ALL_RACE, GET_DETAIL, GET_TEMPERAMENTS, SEARCH_FOR_NAME,ORDER_BY_NAME_AZ, ORDER_BY_NAME_ZA,FILTER_CREATED, 
+    ORDER_BY_TEMPERAMENT, ORDER_BY_PESO_MIN, ORDER_BY_PESO_MAX} from "./actions";
 
 const initialState = {
     races: [],
@@ -54,13 +55,39 @@ const rootReducer =(state= initialState, action) => {
             };
     
         case FILTER_CREATED:
-                const createdFilter = action.payload === 'Creadas'? state.raceAll.filter(el => el.createdInDb) : state.raceAll.filter(el=>!el.createdInDb)
-                // console.log(createdFilter)
+            const createdFilter = action.payload === 'Creadas'? state.raceAll.filter(el => el.createdInDb) : state.raceAll.filter(el=>!el.createdInDb)
+            // console.log(createdFilter)
+            return {
+                ...state,
+                races: createdFilter
+            };
+            
+        case ORDER_BY_TEMPERAMENT: ///ACÁ HAY ALGO MAL, TRAE UN ARRAY
+            const filterTemp = state.raceAll.filter(dog => {
+                if (!dog.temperaments) return undefined;
+                return dog.temperaments.include (action.payload)
+            })
+            console.log (filterTemp)
+            return {
+                ...state,
+                races: filterTemp
+            }
+            case ORDER_BY_PESO_MIN: //ESTE ESTÁN MAL PERO NO TAN MAL! Tiene un tema cuando hay dos iguales en el primero y no tiene en cuanta el de atras. O sea, pone antes 1-5 que 1-3
+            //ACA HAY QUE HACER OTRO IF DENTRO PARA EL SEGUNDO DÍGITO
+                let resultsMin = state.raceAll.sort((a,b) => parseInt(a.weight.slice(0, 3)) - parseInt(b.weight.slice(0, 3)))
+                console.log(resultsMin)
                 return {
                     ...state,
-                    races: createdFilter
-                }       
-                default: return {...state}
+                    races: resultsMin
+                }
+            case ORDER_BY_PESO_MAX:
+                let resultsMax = state.raceAll.sort((a,b) => parseInt(b.weight.slice(0, 3)) - parseInt(a.weight.slice(0, 3)))
+                console.log(resultsMax)
+                return {
+                    ...state,
+                    races: resultsMax
+                };
+            default: return {...state}
     }
 }
 
