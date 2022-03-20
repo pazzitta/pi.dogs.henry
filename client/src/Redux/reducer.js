@@ -1,4 +1,4 @@
-import { GET_ALL_RACE, GET_DETAIL, GET_TEMPERAMENTS, SEARCH_FOR_NAME,ORDER_BY_NAME,FILTER_CREATED } from "./actions";
+import { GET_ALL_RACE, GET_DETAIL, GET_TEMPERAMENTS, SEARCH_FOR_NAME,ORDER_BY_NAME_AZ, ORDER_BY_NAME_ZA,FILTER_CREATED } from "./actions";
 
 const initialState = {
     races: [],
@@ -31,25 +31,29 @@ const rootReducer =(state= initialState, action) => {
                 ...state,
                 temperaments: action.payload
             };
-        case ORDER_BY_NAME:
+        case ORDER_BY_NAME_AZ:
             // let sortRace = state.races 
-            let sortRace = action.payload === 'Asc' ?
-                state.races.sort(function (a, b){
-                   if (a.name > b.name)return 1;
-                   if (b.name > a.name)return -1;
-                   return 0;
-                }) :
-                state.races.sort (function (a, b) {
-                   if (a.name> b.name)return -1;
-                   if (b.name> a.name)return 1;
-                   return 0;
-                })
-                console.log(sortRace)
-                return {
-                   ...state,
-                   races: sortRace
-                };
-            case FILTER_CREATED:
+            let resultsAZ = state.raceAll.sort(function(a, b){
+                if (a.name > b.name) return 1;
+                if (a.name < b.name) return -1;
+                return 0;
+            });
+            return {
+                ...state,
+                races: resultsAZ
+            }
+        case ORDER_BY_NAME_ZA:
+            let resultsZA = state.raceAll.sort(function(a, b){
+                if (a.name > b.name) return -1;
+                if (a.name < b.name) return 1;
+                return 0;
+            });
+            return {
+                ...state,
+                races: resultsZA
+            };
+    
+        case FILTER_CREATED:
                 const createdFilter = action.payload === 'Creadas'? state.raceAll.filter(el => el.createdInDb) : state.raceAll.filter(el=>!el.createdInDb)
                 // console.log(createdFilter)
                 return {

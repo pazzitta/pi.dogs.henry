@@ -4,7 +4,7 @@ import BarraSup from "../../BarraPinta/BarraSup";
 import SearchBar from "../../SearchBar/SearchBar";
 import Cards from "../Cards/Cards";
 import './Home.css'
-import { getAllTemperaments, orderByName, filterCreated } from "../../../Redux/actions";
+import { getAllTemperaments, orderByNameAz, orderByNameZa, filterCreated } from "../../../Redux/actions";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 
@@ -21,13 +21,22 @@ useEffect(() => {
 const [orden, setOrden] = useState('')
 const [page, setPage] = useState(1);
 
-function handleSortName (e) { 
-    console.log (e)
-    e.preventDefault ();
-    dispatch (orderByName (e.target.value));
-    setPage (1);
-    setOrden (`Ordenado ${e}`); // con el cambio de e.target.value a e solo hace un cambio sin necesidad de otro evento, pero el segundo no lo hace...
- }
+function handleSortName(e){
+    if(e.target.value === "Asc"){
+        e.preventDefault ();
+        dispatch (orderByNameAz(e.target.value));
+        setPage (1);
+        setOrden (`Ordenado ${e.target.value}`)
+    }else if(e.target.value === "Desc"){
+        e.preventDefault ();
+        dispatch (orderByNameZa(e.target.value));
+        setPage (1);
+        setOrden (`Ordenado ${e.target.value}`)
+    }else{
+        
+    }
+}
+
 
 function handleFilterCreated (e) {
     dispatch(filterCreated (e.target.value))

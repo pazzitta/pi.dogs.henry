@@ -2,7 +2,8 @@ export const GET_ALL_RACE = 'GET_ALL_RACE';
 export const GET_DETAIL = 'GET_DETAIL';
 export const GET_TEMPERAMENTS = 'GET_TEMPERAMENTS';
 export const SEARCH_FOR_NAME = 'SEARCH_FOR_NAME';
-export const ORDER_BY_NAME = 'ORDER_BY_NAME';
+export const ORDER_BY_NAME_AZ = 'ORDER_BY_NAME_AZ';
+export const ORDER_BY_NAME_ZA = 'ORDER_BY_NAME_ZA';
 export const FILTER_CREATED = 'FILTER_CREATED';
 
 const RUTA_GET = "http://localhost:3001/dogs/get";
@@ -39,14 +40,21 @@ export const searchForName = (payload) => async dispatch => {
   }
 }
 
-export const orderByName = (payload) =>{
+export const orderByNameAz = (payload) =>{
    console.log(payload)
    return {
-      type: ORDER_BY_NAME,
+      type: ORDER_BY_NAME_AZ,
       payload
    }
 }
 
+export const orderByNameZa = (payload) =>{
+   console.log(payload)
+   return {
+      type: ORDER_BY_NAME_ZA,
+      payload
+   }
+}
 export const filterCreated = (payload) => {
    // console.log (payload)
    return  {
