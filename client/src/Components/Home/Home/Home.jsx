@@ -60,9 +60,9 @@ function handleFilterCreated (e) {
 }
 
 function handleTemperaments (e) {  //HAY ALGO MAL EN EL REDUCER, TRAE UN ARRY VACÍO!
-    console.log(e)
+ console.log(e)
    dispatch(orderByTemperaments(e.target.value))
-   setPage(1)
+//    setPage(1)
 }
 
     return (

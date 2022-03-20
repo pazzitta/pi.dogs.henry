@@ -64,8 +64,8 @@ const rootReducer =(state= initialState, action) => {
             
         case ORDER_BY_TEMPERAMENT: ///ACÁ HAY ALGO MAL, TRAE UN ARRAY
             const filterTemp = state.raceAll.filter(dog => {
-                if (!dog.temperaments) return undefined;
-                return dog.temperaments.include (action.payload)
+                if (!dog.temperamento) return undefined;
+                return dog.temperamento.includes(action.payload)
             })
             console.log (filterTemp)
             return {
