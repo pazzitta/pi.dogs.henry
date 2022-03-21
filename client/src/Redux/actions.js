@@ -66,11 +66,11 @@ export const filterCreated = (payload) => {
    }
 }
 
-export const orderByTemperaments = (temperamento) => {
-console.log(temperamento)
+export const orderByTemperaments = (payload) => {
+console.log(payload)
    return {
       type: ORDER_BY_TEMPERAMENT,
-      payload: temperamento
+      payload
    }
 }
 

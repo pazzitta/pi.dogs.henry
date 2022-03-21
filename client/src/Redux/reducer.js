@@ -62,10 +62,10 @@ const rootReducer =(state= initialState, action) => {
                 races: createdFilter
             };
             
-        case ORDER_BY_TEMPERAMENT: ///ACÁ HAY ALGO MAL, TRAE UN ARRAY
+        case ORDER_BY_TEMPERAMENT: 
             const filterTemp = state.raceAll.filter(dog => {
-                if (!dog.temperamento) return undefined;
-                return dog.temperamento.includes(action.payload)
+                if (!dog.temperament) return undefined;
+                return dog.temperament.includes(action.payload)
             })
             console.log (filterTemp)
             return {

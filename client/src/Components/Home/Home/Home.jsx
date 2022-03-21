@@ -90,7 +90,7 @@ function handleTemperaments (e) {  //HAY ALGO MAL EN EL REDUCER, TRAE UN ARRY VA
                 <option value="Min">Min-Max</option>
                 <option value="Max">Max-Min</option>
             </select>  
-            <select onChange={handleTemperaments} className="temperamentofil">
+            <select onChange={ (e) =>handleTemperaments (e)} className="temperamentofil">
             <option disabled selected>Filtrar por temperamento</option>
             {dogtemperaments.map((dt)=>(
                               <option key={dt} value={dt}>{dt}</option>
