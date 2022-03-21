@@ -73,8 +73,8 @@ const rootReducer =(state= initialState, action) => {
                 races: filterTemp
             }
             case ORDER_BY_PESO_MIN: //ESTE ESTÁN MAL PERO NO TAN MAL! Tiene un tema cuando hay dos iguales en el primero y no tiene en cuanta el de atras. O sea, pone antes 1-5 que 1-3
-            //ACA HAY QUE HACER OTRO IF DENTRO PARA EL SEGUNDO DÍGITO
-                let resultsMin = state.raceAll.sort((a,b) => parseInt(a.weight.slice(0, 3)) - parseInt(b.weight.slice(0, 3)))
+            //HAY QUE HACER EL PROMEDIO!
+                let resultsMin = state.raceAll.sort((a,b) => parseInt(a.weight.split(0, 3)) - parseInt(b.weight.slice(0, 3)))
                 console.log(resultsMin)
                 return {
                     ...state,

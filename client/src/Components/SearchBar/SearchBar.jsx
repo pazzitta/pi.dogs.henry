@@ -20,6 +20,7 @@ function handleSubmit (e) {
     e.preventDefault()
     dispatch (searchForName(name))
     setName('')
+    
 }
 
     return (

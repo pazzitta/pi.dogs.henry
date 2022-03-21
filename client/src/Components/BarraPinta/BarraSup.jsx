@@ -7,7 +7,9 @@ import './BarraSup.css';
 export default function BarraSup () {
     return (
         <div >
+            
             <div >
+               
                 <nav className="barra">
                 <Link to='/home' id="click">
                   <button className="botonName"></button>

@@ -4,7 +4,8 @@ import BarraSup from "../../BarraPinta/BarraSup";
 import SearchBar from "../../SearchBar/SearchBar";
 import Cards from "../Cards/Cards";
 import './Home.css'
-import { getAllTemperaments, orderByNameAz, orderByNameZa, filterCreated, orderByTemperaments, orderByPesoMin, orderByPesoMax } from "../../../Redux/actions";
+import { getAllTemperaments, orderByNameAz, orderByNameZa, filterCreated, orderByTemperaments, 
+orderByPesoMin, orderByPesoMax } from "../../../Redux/actions";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 
@@ -23,7 +24,7 @@ useEffect(() => {
 const [orden, setOrden] = useState('')
 const [page, setPage] = useState(1);
 
-function handleSortName(e){
+function handleSortName(e){ //acá debería ordenar como me los trae de la api con el value All y el getAllDogs de las cards?
     if(e.target.value === "Asc"){
         e.preventDefault ();
         dispatch (orderByNameAz(e.target.value));
@@ -38,6 +39,7 @@ function handleSortName(e){
         
     }
 }
+
 
 function handleSortPeso(e){
     if(e.target.value === "Min"){
@@ -67,8 +69,10 @@ function handleTemperaments (e) {  //HAY ALGO MAL EN EL REDUCER, TRAE UN ARRY VA
 
     return (
         <div>
+        
            <BarraSup/>  
            <SearchBar/>  
+           
            <div>
         
               <Link className="sinlinea" to='/create' id="click">
