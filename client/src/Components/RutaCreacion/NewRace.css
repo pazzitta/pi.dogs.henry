@@ -82,16 +82,24 @@
 }
 .tituloCrear {
     position: relative;
-    top: 20px;
+    top: 10px;
     color: rgb(255, 255, 255);
     font-style: trebuchet;
     font-weight: 700;
     font-size: 2.5rem; 
 }
+
+/* NOMBRE */
+.cajaname {
+   position: relative;
+   top: 0px;
+   background-color: blueviolet;
+   height: 90px;
+}
 .textName {
     position: relative;
-    right: 0vw;
-    top: 4.5vh;
+    right: 36%;
+    top: 11%;
     color: rgb(255, 255, 255);
     font-style: trebuchet;
     font-weight: 600;
@@ -99,18 +107,39 @@
 }
 .barraName {
     position: relative;
-    left: 4vw;
-    top: 4vh;
+    left: 80px;
+    bottom: 2vh;
     background-color: transparent;
     border-color: white;
     border-radius: 6px;
-    height: 4vh;
+    height: 3vh;
     width: 17vw;
 }
+
+.valNombre {
+    position: relative;
+    left:185px;
+    bottom: 33px;
+    color: rgb(165, 165, 165);
+    background-color: aqua;
+    /* background-color: transparent; */
+    width: 290px;
+    height: 37px;
+    line-height : 15px;
+}
+
+/* ALTURA */
+.cajaAltura {
+    position: relative;
+   bottom: 15px;
+    background-color: rgb(175, 49, 49);
+    height: 70px;
+ }
+
 .textAltura {
     position: relative;
-    right: 22.6vw;
-    top: 12vh;
+    right:  38%;
+    top: -7%;
     color: rgb(255, 255, 255);
     font-style: trebuchet;
     font-weight: 600;
@@ -118,24 +147,53 @@
 }
 .barraAlturaMin {
     position: relative;
-    left: 4.6vw;
-    top: 7vh ;
+    left: 8px;
+    bottom: 38px;
     background-color: transparent;
     border-color: white;
     border-radius: 6px;
-    height: 4vh;
+    height: 3vh;
     width: 8.2vw;
 }
 .barraAlturaMax {
     position: relative;
-    left: 4.8vw;
-    top: 7vh ;
+    left:160px;
+    bottom:145px ;
     background-color: transparent;
     border-color: white;
     border-radius: 6px;
-    height: 4vh;
+    height: 3vh;
     width: 8.2vw;
 }
+.valAMin {
+    position: relative;
+    left:185px;
+    bottom:50px;
+    color: rgb(165, 165, 165);
+    background-color: aqua;
+    /* background-color: transparent; */
+    width: 145px;
+    height: 37px;
+    line-height : 15px;
+}
+
+.valAMax {
+    position: relative;
+    left:340px;
+    bottom:160px;
+    color: rgb(165, 165, 165);
+    background-color: aqua;
+    /* background-color: transparent; */
+    width: 145px;
+    height: 37px;
+    line-height : 15px;
+}
+
+.cajaMinMax {
+    position: static;
+}
+
+/* PESO */
 .textPeso {
     position: relative;
     right: 11.6vw;
@@ -152,7 +210,7 @@
     background-color: transparent;
     border-color: white;
     border-radius: 6px;
-    height: 4vh;
+    height: 3vh;
     width: 8.2vw;
 }
 .barraPesoMax {
@@ -162,7 +220,7 @@
     background-color: transparent;
     border-color: white;
     border-radius: 6px;
-    height: 4vh;
+    height: 3vh;
     width: 8.2vw;
 }
 .textLife {
@@ -181,6 +239,10 @@
     background-color: transparent;
     border-color: white;
     border-radius: 6px;
-    height: 4vh;
+    height: 3vh;
     width: 17vw;
 }
+
+
+
+
