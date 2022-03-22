@@ -17,7 +17,7 @@ export function validate (input) {
 //Altura hay un tema con las \, pero si no la pongo deja poner puntos
    if (!input.alturaMin) {
       errors.alturaMin = "Campo requerido"
-   }else if (!/^[0-9]\d*(\.\,\d+)?$/.test(input.alturaMin)) {
+   }else if (!/^[0-9]\d*(\.\d+)?$/.test(input.alturaMin)) {
       errors.alturaMin = "Solo numeros enteros"
    }else if (input.alturaMin < 1) {
       errors.alturaMin = "No es un insecto ;)"
@@ -27,7 +27,7 @@ export function validate (input) {
 
    if (!input.alturaMax) {
       errors.alturaMax = "Campo requerido"
-   }else if (!/^[0-9]\d*(\.\,\d+)?$/.test(input.alturaMax)) {
+   }else if (!/^[0-9]\d*(\.\d+)?$/.test(input.alturaMax)) {
       errors.alturaMax = "Ingrese solo números enteros"   ///lee el primer numero no el numero entero
    }else if (input.alturaMax < input.alturaMin) {
       errors.alturaMax = "Debe ser mayor a la altura miníma"
@@ -38,7 +38,7 @@ export function validate (input) {
 //Peso
    if (!input.pesoMin) {
       errors.pesoMin = "Campo requerido"
-   }else if (!/^[0-9]\d*(\.\,\d+)?$/.test(input.pesoMin)) {
+   }else if (!/^[0-9]\d*(\.\d+)?$/.test(input.pesoMin)) {
       errors.pesoMin = "Ingrese solo números enteros"
    }else if (input.pesoMin < 1) {
    errors.alturaMax = "No es pluma ;)"
@@ -48,7 +48,7 @@ export function validate (input) {
 
    if (!input.pesoMax) {
       errors.pesoMax = "Campo requerido"
-   }else if (!/^[0-9]\d*(\.\,\d+)?$/.test(input.pesoMax)) {
+   }else if (!/^[0-9]\d*(\.\d+)?$/.test(input.pesoMax)) {
       errors.pesoMax = "Ingrese solo números enteros"
    }else if (input.pesoMax  <  input.pesoMin) {
    errors.pesoMax = "Debe ser mayor al peso minímo"
@@ -56,12 +56,16 @@ export function validate (input) {
    errors.pesoMax = "Ni que fuese elefante ;)"
    }
 
-//Vida
+//Vida acá solo un numero, después veo si hago otra validación...
 
    if (!input.vida) {
       errors.vida = "Campo requerido"
-   }else if (!/^[A-Z]+[A-Za-z0-9\s]+$/g.test(input.vida)) {
+   }else if (!/^[0-9]\d*(\.\d+)?$/.test(input.vida)) {
       errors.vida = "Ingrese solo números enteros"
+   }else if (input.vida  <  1) {
+   errors.vida = "Todavía está en la panza de la mamá?"
+   }else if (input.vida > 29) {
+   errors.vida = "No es tortuga..."
    }
 
    return errors
