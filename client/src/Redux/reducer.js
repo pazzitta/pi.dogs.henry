@@ -74,14 +74,30 @@ const rootReducer =(state= initialState, action) => {
             }
             case ORDER_BY_PESO_MIN: //ESTE ESTÁN MAL PERO NO TAN MAL! Tiene un tema cuando hay dos iguales en el primero y no tiene en cuanta el de atras. O sea, pone antes 1-5 que 1-3
             //HAY QUE HACER EL PROMEDIO!
-                let resultsMin = state.raceAll.sort((a,b) => parseInt(a.weight.split(0, 3)) - parseInt(b.weight.slice(0, 3)))
+            // const generaPesoProm = (weightA, weightB) => {
+            //     let a, b, c, d, prom1, prom2;
+            //     let weight1 = weightA.split(" - ");
+            //     let weight2 = weightB.split(" - ");
+            //     a = parseInt(weight1[0]);
+            //     c = parseInt(weight2[0]);
+            //     b = parseInt(weight1[1]);
+            //     d = parseInt(weight2[1]);
+            //     prom1 = (a + b) / 2;
+            //     prom2 = (c + d) / 2;
+            //     return { prom1, prom2 };
+            //   };
+            //   let resultsMin = state.raceAll.sort((a, b) => {
+            //     let { prom1, prom2 } = generaPesoProm(a.weight, b.weight);
+            //     return prom1 === prom2 ? 0 : prom1 > prom2 ? 1 : -1;
+            //   });
+                let resultsMin = state.raceAll.sort((a,b) => parseInt(a.weight.slice(0, 3)) - parseInt(b.weight.slice(0, 3)))
                 console.log(resultsMin)
                 return {
                     ...state,
                     races: resultsMin
                 }
             case ORDER_BY_PESO_MAX:
-                let resultsMax = state.raceAll.sort((a,b) => parseInt(b.weight.slice(0, 3)) - parseInt(a.weight.slice(0, 3)))
+                let resultsMax = state.raceAll.sort((a,b) => parseInt(b.weight.slice(0, 3)) - parseInt(a.weight.split(0, 3)))
                 console.log(resultsMax)
                 return {
                     ...state,

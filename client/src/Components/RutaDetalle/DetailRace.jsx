@@ -13,13 +13,13 @@ const raceDetails = useSelector(state => state.raceDetail);
 
 const id = props.match.params.id;
         
-        
+/// ANDA PERO NO PASA LA INFO DE LOS CREADOS!        
 useEffect(() => {
     dispatch(getRaceDetail(id))
 }, [dispatch, id]);
                        
     return (
-        <div>
+        <div key={id}>
           
            <BarraSup/>  
            
@@ -28,10 +28,10 @@ useEffect(() => {
                  <button className="buttonVolverD">VOLVER</button>
               </Link>
            </div> 
-
-           <div key={id}>
+{raceDetails.length > 0 ? 
+           <div>
                
-               <div >
+               <div  >
                    <img src={raceDetails[0].image? raceDetails[0].image :"https://images.pexels.com/photos/3299905/pexels-photo-3299905.jpeg?cs=srgb&dl=pexels-goochie-poochie-grooming-3299905.jpg&fm=jpg"} alt="La imagen no se encuentra" className="imageDetail"/>
                </div>
                <div className="nameDetail">{raceDetails[0].name}</div>
@@ -43,9 +43,9 @@ useEffect(() => {
                <div className="alturaDetail">{raceDetails[0].weight} m </div>
                <div className="liveNameDetail">Años de vida</div>
                <div className="liveDetail">{raceDetails[0].life_span}</div>
-           
-           </div>  
-        
-        </div>
+            
+            </div> 
+         : <img className="imageDetail" src="https://images.pexels.com/photos/3299905/pexels-photo-3299905.jpeg?cs=srgb&dl=pexels-goochie-poochie-grooming-3299905.jpg&fm=jpg" alt="" /> }
+     </div>
     )
 }
