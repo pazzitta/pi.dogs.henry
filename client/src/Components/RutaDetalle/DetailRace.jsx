@@ -38,9 +38,9 @@ useEffect(() => {
                <div className="tempNameDetail">Temperamentos</div>
                <div className="tempDetail">{raceDetails[0].temperament}</div>
                <div className="pesoNameDetail" >Peso</div>
-               <div className="pesoDetail">{raceDetails[0].height} kg</div>
+               <div className="pesoDetail">{raceDetails[0].weight} kg</div>
                <div className="alturaNameDetail">Altura</div>
-               <div className="alturaDetail">{raceDetails[0].weight} m </div>
+               <div className="alturaDetail">{raceDetails[0].height} cm </div>
                <div className="liveNameDetail">Años de vida</div>
                <div className="liveDetail">{raceDetails[0].life_span}</div>
             

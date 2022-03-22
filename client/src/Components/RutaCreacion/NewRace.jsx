@@ -14,30 +14,49 @@ export function validate (input) {
    }else if (!/^[A-Z]+[A-Za-z0-9\s]+$/g.test(input.nombre)) {
       errors.nombre= "Ingrese la primera letra en Mayúscula, solo letras y números"
    }
-
+//Altura hay un tema con las \, pero si no la pongo deja poner puntos
    if (!input.alturaMin) {
       errors.alturaMin = "Campo requerido"
-   }else if (!/^[A-Z]+[A-Za-z0-9\s]+$/g.test(input.alturaMin)) {
-      errors.alturaMin = "Ingrese solo números enteros"
+   }else if (!/^[0-9]\d*(\.\,\d+)?$/.test(input.alturaMin)) {
+      errors.alturaMin = "Solo numeros enteros"
+   }else if (input.alturaMin < 1) {
+      errors.alturaMin = "No es un insecto ;)"
+   }else if (input.alturaMin > 99) {
+      errors.alturaMin = "No es jirafa ;)"
    }
 
    if (!input.alturaMax) {
       errors.alturaMax = "Campo requerido"
-   }else if (!/^[A-Z]+[A-Za-z0-9\s]+$/g.test(input.alturaMax)) {
-      errors.alturaMax = "Ingrese solo números enteros"
+   }else if (!/^[0-9]\d*(\.\,\d+)?$/.test(input.alturaMax)) {
+      errors.alturaMax = "Ingrese solo números enteros"   ///lee el primer numero no el numero entero
+   }else if (input.alturaMax < input.alturaMin) {
+      errors.alturaMax = "Debe ser mayor a la altura miníma"
+   }else if (input.alturaMax > 149) {
+      errors.alturaMax = "No es jirafa ;)"
    }
-   
+
+//Peso
    if (!input.pesoMin) {
       errors.pesoMin = "Campo requerido"
-   }else if (!/^[A-Z]+[A-Za-z0-9\s]+$/g.test(input.pesoMin)) {
+   }else if (!/^[0-9]\d*(\.\,\d+)?$/.test(input.pesoMin)) {
       errors.pesoMin = "Ingrese solo números enteros"
+   }else if (input.pesoMin < 1) {
+   errors.alturaMax = "No es pluma ;)"
+   }else if (input.pesoMin > 100) {
+   errors.pesoMin = "Ni que fuese elefante ;)"
    }
 
    if (!input.pesoMax) {
       errors.pesoMax = "Campo requerido"
-   }else if (!/^[A-Z]+[A-Za-z0-9\s]+$/g.test(input.pesoMax)) {
+   }else if (!/^[0-9]\d*(\.\,\d+)?$/.test(input.pesoMax)) {
       errors.pesoMax = "Ingrese solo números enteros"
+   }else if (input.pesoMax  <  input.pesoMin) {
+   errors.pesoMax = "Debe ser mayor al peso minímo"
+   }else if (input.pesoMax > 130) {
+   errors.pesoMax = "Ni que fuese elefante ;)"
    }
+
+//Vida
 
    if (!input.vida) {
       errors.vida = "Campo requerido"
@@ -69,12 +88,12 @@ const [input, setInput] = useState ({
 })
 
 const [errors, setErrors] = useState ({
-      nombre: 'Campo requerido',
+      nombre: '',
       alturaMin: 'Campo requerido',
       alturaMax :'Campo requerido',
       pesoMin: 'Campo requerido',
       pesoMax: 'Campo requerido',
-      vida: 'Campo requerido',
+      vida: '',
 })
 
 const handleInputChange = (e) => {
@@ -108,55 +127,61 @@ const handleInputChange = (e) => {
                   <div className="tituloCrear">CREA TU PROPIA RAZA</div>
                   
                   <div className="cajaname">
-                  <label className="textName">Nombre</label>
-                  <br/>
+                     <label className="textName">Nombre</label>
+                     <br/>
                  
-                  <div>
-                     <input className="barraName" placeholder="nombre" type= "text" name="nombre" value={input.nombre} onChange={handleInputChange} />
-                     {errors.nombre && (
-                        <p className="valNombre"> {errors.nombre} </p> 
-                     )}
-                  </div>
+                     <div>
+                        <input className="barraName" placeholder="nombre" type= "text" name="nombre" value={input.nombre} onChange={handleInputChange} />
+                        {errors.nombre && (
+                           <p className="valNombre"> {errors.nombre} </p> 
+                        )}
+                     </div>
                  
                   </div>
                   <br/>
                   
                   <div className="cajaAltura">
-                  <label className="textAltura">Altura</label>
-                  <br/>
+                     <label className="textAltura">Altura</label>
+                     <br/>
                   
-                  {/* <div className="cajaMinMax"> */}
                      <input className="barraAlturaMin" placeholder="min" type= "text" name="alturaMin" value={input.alturaMin} onChange={handleInputChange}/>
-                     {errors.alturaMin && (
-                        <p className="valAMin"> {errors.alturaMin} </p> 
-                     )}
-                  <div className="cajaMinMax">   
-                  <input className="barraAlturaMax" placeholder="max" type= "text" name="alturaMax" value={input.alturaMax} onChange={handleInputChange}/>
-                     {errors.alturaMax && (
-                        <p className="valAMax"> {errors.alturaMax} </p> 
-                     )}
-                  </div>      
-                  
+                        {errors.alturaMin && (
+                           <p className="valAMin"> {errors.alturaMin}</p> 
+                        )}
+            
+                     <input className="barraAlturaMax" placeholder="max" type= "text" name="alturaMax" value={input.alturaMax} onChange={handleInputChange}/>
+                        {errors.alturaMax && (
+                           <p className="valAMax"> {errors.alturaMax} </p> 
+                        )}
+                     
                   </div>
                   <br/>
 
-                  <label className="textPeso">Peso</label>
-                  <div >
+                  <div className="cajaPeso">
+                     <label className="textPeso">Peso</label>
+                     <br/>
+                     
                      <input className="barraPesoMin" placeholder="min" type= "text" name="pesoMin" value={input.pesoMin} onChange={handleInputChange}/>
-                     {/* {errors.pesoMin && (
+                     {errors.pesoMin && (
                         <p className="valPMin"> {errors.pesoMin} </p> 
-                     )} */}
+                     )}
                      <input className="barraPesoMax" placeholder="max" type= "text" name="pesoMax" value={input.pesoMax} onChange={handleInputChange}/>
-                     {/* {errors.pesoMax && (
+                     {errors.pesoMax && (
                         <p className="valPMax"> {errors.pesoMax} </p> 
-                     )} */}
+                     )}
+
                   </div>
+                  <br/>
+
+                  <div className="cajaLife">
                   
                   <label className="textLife">Años de vida</label>
+                  <br/>
                   <input className="barraLife" placeholder="life" type= "text" name="vida" value={input.vida} onChange={handleInputChange}/>
-                  {/* {errors.vida && (
+                  {errors.vida && (
                         <p className="valVida"> {errors.vida} </p> 
-                     )} */}
+                     )}
+                  </div>
 
                   <select className="selecTemp" >
                      <option disabled selected>Elegir temperamento/s</option>
