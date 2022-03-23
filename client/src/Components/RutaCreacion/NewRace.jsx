@@ -68,6 +68,9 @@ export function validate (input) {
    errors.vida = "No es tortuga..."
    }
 
+//temperaments
+if (!input.temperament.length) errors.temperament = "Debe seleccionar al menos un temperamento"
+
    return errors
 }
 
@@ -75,6 +78,7 @@ export default function NewRace () {
 
 const dogtemperaments = useSelector ((state) => state.temperaments);
 const dispatch = useDispatch ();
+const history = useHistory();
 
 useEffect(() => {
     dispatch(getAllTemperaments())
@@ -101,17 +105,45 @@ const [errors, setErrors] = useState ({
 })
 
 const handleInputChange = (e) => {
-   console.log (e)
+   // S
    e.preventDefault ();
    setInput ( {
       ...input,
       [e.target.name]: e.target.value
    })
+   console.log(input)
    setErrors (validate ({
       ...input,
       [e.target.name]: e.target.value
    })
   );
+}
+
+const handleSelect = (e) => {
+   setInput ({
+      ...input, 
+      temperament: [...input.temperament, e.target.value]
+   })
+   console.log(input)
+   const validations = validate(input);
+      setErrors(validations) 
+}
+
+const handleSubmit = (e) => {
+   e.preventDefault()
+   console.log(input)
+   dispatch(postRace(input))
+   alert ("Se creo un nueva raza")
+   setInput ({
+      nombre: '',
+      alturaMin: '',
+      alturaMax :'',
+      pesoMin: '',
+      pesoMax: '',
+      vida: '',
+      temperament: []
+   })
+   history.push('/home')
 }
 
     return (
@@ -127,7 +159,7 @@ const handleInputChange = (e) => {
            <div className="imageF">
            
            <div>
-              <form className="fondoGris">
+              <form className="fondoGris" onSubmit={handleSubmit}>
                   <div className="tituloCrear">CREA TU PROPIA RAZA</div>
                   
                   <div className="cajaname">
@@ -182,15 +214,18 @@ const handleInputChange = (e) => {
                         <p className="valVida"> {errors.vida} </p> 
                      )}
                   </div>
-
-                  <select className="selecTemp" >
+                  
+                  <div> 
+                  <select className="selecTemp" onChange={handleSelect} >
                      <option disabled selected>Elegir temperamento/s</option>
                         {dogtemperaments.map((dt)=>(
                               <option  key={dt} value={dt}>{dt}</option>
                            ))}
                   </select>
+                  <ul><li> {input.temperament.map(ele => ele + " ,")}</li></ul>
+                  </div>
 
-                  <button className="crear">CREAR</button>
+                  <button type="submit" className="crear">CREAR</button>
                   
               </form>
            </div>

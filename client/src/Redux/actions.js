@@ -1,3 +1,4 @@
+const axios = require ('axios');
 export const GET_ALL_RACE = 'GET_ALL_RACE';
 export const GET_DETAIL = 'GET_DETAIL';
 export const GET_TEMPERAMENTS = 'GET_TEMPERAMENTS';
@@ -45,20 +46,20 @@ export const searchForName = (payload) => async dispatch => {
   }
 }
 
-export const postRace = (payload) => async dispatch => {
-   // console.log (payload)
-   return await fetch(RUTA_POST, payload)
-   .then (respose => respose.json())
-   .then (json => dispatch ({type: POST_RACE, payload: json} )) //no usa el dispatch... ver porque
-}
-
-// export function postRace(payload) { 
-//    return async function() {
-//            var response = await axios.post(RUTA_POST, payload);
-//            console.log(response)
-//            return response;
-//    }
+// export const postRace = (payload) => async dispatch => {
+//    // console.log (payload)
+//    return await fetch(RUTA_POST, payload)
+//    .then (respose => respose.json())
+//    .then (json => dispatch ({type: POST_RACE, payload: json} )) //no usa el dispatch... ver porque
 // }
+
+export function postRace(payload) { 
+   return async function() {
+           var response = await axios.post(RUTA_POST, payload);
+           console.log(response)
+           return response;
+   }
+}
 
 export const orderByNameAz = (payload) =>{
    console.log(payload)
