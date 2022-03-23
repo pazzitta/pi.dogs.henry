@@ -61,7 +61,7 @@ function handleFilterCreated (e) {
     dispatch(filterCreated (e.target.value))
 }
 
-function handleTemperaments (e) {  //HAY ALGO MAL EN EL REDUCER, TRAE UN ARRY VACÍO!
+function handleTemperaments (e) { 
  console.log(e)
    dispatch(orderByTemperaments(e.target.value))
 //    setPage(1)
@@ -69,9 +69,11 @@ function handleTemperaments (e) {  //HAY ALGO MAL EN EL REDUCER, TRAE UN ARRY VA
 
     return (
         <div>
-        
+           
            <BarraSup/>  
-           <SearchBar/>  
+           <SearchBar/> 
+           {/* FALATA QUE ANDE ESTE BOTÓN, HACER EL HANDLE A ALLRACE */}
+           <button className="botonRefresh">Volver a cargar todas las razas</button>
            
            <div>
         
@@ -107,7 +109,7 @@ function handleTemperaments (e) {  //HAY ALGO MAL EN EL REDUCER, TRAE UN ARRY VA
             </select>           
             </div>   
            
-            <div>
+            <div className="ubicacCards">
                <Cards/>
             </div>
         

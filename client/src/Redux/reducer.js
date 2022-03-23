@@ -1,5 +1,5 @@
 import { GET_ALL_RACE, GET_DETAIL, GET_TEMPERAMENTS, SEARCH_FOR_NAME,ORDER_BY_NAME_AZ, ORDER_BY_NAME_ZA,FILTER_CREATED, 
-    ORDER_BY_TEMPERAMENT, ORDER_BY_PESO_MIN, ORDER_BY_PESO_MAX} from "./actions";
+    ORDER_BY_TEMPERAMENT, ORDER_BY_PESO_MIN, ORDER_BY_PESO_MAX, POST_RACE} from "./actions";
 
 const initialState = {
     races: [],
@@ -31,6 +31,10 @@ const rootReducer =(state= initialState, action) => {
             return {
                 ...state,
                 temperaments: action.payload
+            };
+        case POST_RACE:
+            return{
+                ...state
             };
         case ORDER_BY_NAME_AZ:
             // let sortRace = state.races 
@@ -90,7 +94,7 @@ const rootReducer =(state= initialState, action) => {
             //     let { prom1, prom2 } = generaPesoProm(a.weight, b.weight);
             //     return prom1 === prom2 ? 0 : prom1 > prom2 ? 1 : -1;
             //   });
-                let resultsMin = state.raceAll.sort((a,b) => parseInt(a.weight.slice(0, 3)) - parseInt(b.weight.slice(0, 3)))
+                let resultsMin = state.raceAll.sort((a,b) => parseInt(a.weight.slice(0, 2)) - parseInt(b.weight.slice(0, 2)))
                 console.log(resultsMin)
                 return {
                     ...state,

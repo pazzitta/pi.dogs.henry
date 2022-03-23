@@ -15,7 +15,7 @@ const getAllDogsApi = async () => {
                 id: el.id,
                 name: el.name,
                 temperament: el.temperament? el.temperament : 'Perrito sin temperamento',
-                weight: el.weight.metric,
+                weight: el.weight.metric !== "NaN" ? el.weight.metric : "27-34" ,
                 image : el.image.url,
                 }
             })
@@ -123,7 +123,7 @@ const getById = async (req, res, next) => {
                     image: el.image.url,
                     name: el.name,
                     temperament: el.temperament? el.temperament : 'Perrito sin temperamento',
-                    weight: el.weight.metric,
+                    weight: el.weight.metric !== "NaN" ? el.weight.metric : "27-34",
                     height: el.height.metric,
                     life_span: el.life_span
                 }
@@ -155,6 +155,7 @@ const getById = async (req, res, next) => {
             weight,
             life_span,
             image
+            // id Ver si por esto no anda el detail 
          })
          let temperamentDB = await Temperament.findAll({
             where: {name: temperament}

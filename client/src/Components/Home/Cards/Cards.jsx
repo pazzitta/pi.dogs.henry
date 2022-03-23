@@ -29,6 +29,7 @@ export default function Cards () {
       dispatch (getAllRace())
     }, [dispatch]) //esta última parate es para que no se genere un bucle infinito de llamados
 
+    // ver si puedo agragar una imagen randon para no tenerla que poner en el render del detail
     return (
        
        <div>

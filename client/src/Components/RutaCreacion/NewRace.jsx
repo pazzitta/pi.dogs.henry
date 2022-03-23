@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import BarraSup from "../BarraPinta/BarraSup";
 import './NewRace.css'
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector} from "react-redux";
 import { useEffect } from "react";
-import { getAllTemperaments } from "../../Redux/actions";
+import { getAllTemperaments, postRace } from "../../Redux/actions";
 
 //validaciones
 export function validate (input) {
@@ -139,8 +139,7 @@ const handleInputChange = (e) => {
                         {errors.nombre && (
                            <p className="valNombre"> {errors.nombre} </p> 
                         )}
-                     </div>
-                 
+                     </div>                 
                   </div>
                   <br/>
                   
@@ -156,8 +155,7 @@ const handleInputChange = (e) => {
                      <input className="barraAlturaMax" placeholder="max" type= "text" name="alturaMax" value={input.alturaMax} onChange={handleInputChange}/>
                         {errors.alturaMax && (
                            <p className="valAMax"> {errors.alturaMax} </p> 
-                        )}
-                     
+                        )}                   
                   </div>
                   <br/>
 
@@ -173,12 +171,10 @@ const handleInputChange = (e) => {
                      {errors.pesoMax && (
                         <p className="valPMax"> {errors.pesoMax} </p> 
                      )}
-
                   </div>
                   <br/>
 
                   <div className="cajaLife">
-                  
                   <label className="textLife">Años de vida</label>
                   <br/>
                   <input className="barraLife" placeholder="life" type= "text" name="vida" value={input.vida} onChange={handleInputChange}/>
