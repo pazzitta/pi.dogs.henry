@@ -148,11 +148,11 @@ const getById = async (req, res, next) => {
 //sacar el h y el w del minimo y max del form? ej height: height.min - height.max (consctenar con el coso invetido)?
  const createNewRace = async (req, res) => {
      try{
-         const {name, height, weight, life_span, image, temperament} = req.body;
+         const {name, heightMin, heightMax , weightMin, weightMax, life_span, image, temperament} = req.body;
          const newRace = await Dog.create({
             name,
-            height,
-            weight,
+            height: `${heightMin.trim()} - ${heightMax.trim()}`,
+            weight: `${weightMin.trim()} - ${weightMax.trim()}`,
             life_span,
             image
             // id Ver si por esto no anda el detail 
