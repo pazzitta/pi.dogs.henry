@@ -144,8 +144,6 @@ const getById = async (req, res, next) => {
 //POST 
 
 //el post anda pero me pasa lo mismo que antes con los temperamentos, no los agrega! 
-//pregunta...aca en el height y en el weight (despues de intentar otras cosas) puedo crear en la base axiliares de wmin y max o pponer dos puntos y
-//sacar el h y el w del minimo y max del form? ej height: height.min - height.max (consctenar con el coso invetido)?
  const createNewRace = async (req, res) => {
      try{
          const {name, heightMin, heightMax , weightMin, weightMax, life_span, image, temperament} = req.body;
@@ -158,9 +156,11 @@ const getById = async (req, res, next) => {
             // id Ver si por esto no anda el detail 
          })
          let temperamentDB = await Temperament.findAll({
-            where: {name: temperament}
-        })
+                 where: { name: temperament },
+               })
+        console.log(temperamentDB)      
        await newRace.addTemperament(temperamentDB)
+       
         res.send(newRace) 
      }catch (error) {
          console.log('no anda post')

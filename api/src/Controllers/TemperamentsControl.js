@@ -29,23 +29,35 @@ const allInArray = async () => {
     const arrayOfObjects = await allTemRep ();
     const sinEspacios = arrayOfObjects.map((e) => e && e.split(", ")).flat().sort(); // intera en los array y devuelve un solo array con todos los elementos y orrdenados alfabéticamente
     const stringUnicos = [...new Set(sinEspacios)] // SET El objeto global Set es una estructura de datos, una colección de valores que permite sólo almacenar valores únicos de cualquier tipo, incluso valores primitivos u referencias a objetos.Es posible iterar sobre los elementos en el orden de inserción.
-    return stringUnicos; 
+    console.log(stringUnicos) 
+    return stringUnicos;
+    
     }catch (error) {
         console.log ('no anda allInArray')
     }
 }
 
-//en teorìa está creado en la base de datos...pero tira error!
+//no crea en la base de datos!
 
 const getAllTemperaments = async (req, res, netx) => {
   try {
     const vertem = await allInArray();
-    vertem.map(el => {
-        Temperament.bulkCreate({
-            where: { name: el}
+    var aux = vertem
+        .map((e) => {
+          return {
+            name: e,
+          };
         })
-    });
-    res.send (vertem)
+        .filter((e) => e.name);
+    // console.log(vertem);
+    const todos = await Temperament.bulkCreate(aux)
+    // vertem.map(el => {
+    //     Temperament.bulkCreate({
+    //         where: { name: el}
+    //     })
+    // });
+    // const enDb = await Temperament.findAll()
+    res.send (todos)
     // console.log(vertem)
   } catch (error) {
       console.log ('no anda getAllTemperaments')

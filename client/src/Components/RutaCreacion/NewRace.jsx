@@ -218,7 +218,7 @@ const handleSubmit = (e) => {
                   <div> 
                   <select className="selecTemp" onChange={handleSelect} >
                      <option disabled selected>Elegir temperamento/s</option>
-                        {dogtemperaments.map((dt)=>(
+                        {dogtemperaments && dogtemperaments.map((dt)=>(
                               <option  key={dt} value={dt}>{dt}</option>
                            ))}
                   </select>
