@@ -99,7 +99,7 @@ function handleTemperaments (e) {
             <select onChange={ (e) =>handleTemperaments (e)} className="temperamentofil">
             <option disabled selected>Filtrar por temperamento</option>
             {dogtemperaments.map((dt)=>(
-                              <option key={dt} value={dt}>{dt}</option>
+                              <option key={dt.id} value={dt.name}>{dt.name}</option>
                            ))}
             </select>
             <select onChange={(e) => handleFilterCreated (e)} className="razafil">

@@ -219,7 +219,7 @@ const handleSubmit = (e) => {
                   <select className="selecTemp" onChange={handleSelect} >
                      <option disabled selected>Elegir temperamento/s</option>
                         {dogtemperaments && dogtemperaments.map((dt)=>(
-                              <option  key={dt} value={dt}>{dt}</option>
+                              <option key={dt.id} value={dt.name}>{dt.name}</option>
                            ))}
                   </select>
                   <ul><li> {input.temperament.map(ele => ele + " ,")}</li></ul>

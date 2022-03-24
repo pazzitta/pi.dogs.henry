@@ -167,26 +167,7 @@ const getById = async (req, res, next) => {
      }
 
  };
-
-//  post wen
-//  let data = req.body;
-//   const tempParaBindear = await Promise.all(
-//     data.temperament.map((e) =>
-//       Temperamentos.findOne({
-//         where: { name: e },
-//       })
-//     )
-//   );
-//   const dog = await Raza.create({
-//     nombre: data.name.trim(),
-//     peso: `${data.weightMin.trim()} - ${data.weightMax.trim()}`,
-//     altura: data.height.trim(),
-//     longevidad: data.life.trim(),
-//   });
-//   const unirTempRaza = await Promise.all(
-//     tempParaBindear.map((e) => dog.addTemperamentos(e))
-//   );
-
+ //ME TRAE OBJETOS DENTRO DE UN ARRAY, LO TENGO QUE MAPAR Y SACAR SOLO EL STRIG
 
 
 module.exports = {
