@@ -130,13 +130,33 @@
 }
 
 /* ALTURA */
+
 .cajaAltura {
     position: relative;
-   bottom: 15px;
+    bottom: 15px;
     background-color: rgb(175, 49, 49);
+    background-color: transparent;
     height: 70px;
  }
 
+.ordenAlturaMin {
+    position: relative;
+    bottom: 36px;
+    left: 200px;
+    background-color: rgb(134, 84, 84);
+    background-color: transparent;
+    height: 70px;
+    width: 165px;
+} 
+.ordenAlturaMax {
+    position: relative;
+    bottom: 106px;
+    left: 370px;
+    background-color: rgb(70, 50, 161);
+    background-color: transparent;
+    height: 70px;
+    width: 165px;
+} 
 .textAltura {
     position: relative;
     right:  38%;
@@ -148,8 +168,8 @@
 }
 .barraAlturaMin {
     position: relative;
-    left: 8px;
-    bottom: 38px;
+    left: 0px;
+    bottom:0px;
     background-color: transparent;
     border-color: white;
     border-radius: 6px;
@@ -158,8 +178,8 @@
 }
 .barraAlturaMax {
     position: relative;
-    left:160px;
-    bottom:145px ;
+    left: 0px;
+    bottom:0px ;
     background-color: transparent;
     border-color: white;
     border-radius: 6px;
@@ -168,24 +188,24 @@
 }
 .valAMin {
     position: relative;
-    left:185px;
-    bottom:50px;
+    left:0px;
+    bottom:15px;
     color: rgb(212, 212, 212);
     background-color: aqua;
-    /* background-color: transparent; */
-    width: 145px;
+    background-color: transparent;
+    width: 165px;
     height: 37px;
     line-height : 15px;
 }
 
 .valAMax {
     position: relative;
-    left:340px;
-    bottom:160px;
+    left:0px;
+    bottom:15px;
     color: rgb(212, 212, 212);
     background-color: aqua;
-    /* background-color: transparent; */
-    width: 145px;
+    background-color: transparent;
+    width: 165px;
     height: 37px;
     line-height : 15px;
 }

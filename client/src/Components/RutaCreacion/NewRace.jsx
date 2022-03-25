@@ -97,8 +97,8 @@ const [input, setInput] = useState ({
 
 const [errors, setErrors] = useState ({
       name: '',
-      heightMin: 'Campo requerido',
-      heightMax :'Campo requerido',
+      heightMin: '',
+      heightMax :'',
       weightMin: 'Campo requerido',
       weightMax: 'Campo requerido',
       life_span: '',
@@ -178,16 +178,21 @@ const handleSubmit = (e) => {
                   <div className="cajaAltura">
                      <label className="textAltura">Altura</label>
                      <br/>
-                  
+
+                     <div className="ordenAlturaMin">
                      <input className="barraAlturaMin" placeholder="min" type= "text" name="heightMin" value={input.heightMin} onChange={handleInputChange}/>
                         {errors.heightMin && (
                            <p className="valAMin"> {errors.heightMin}</p> 
                         )}
-            
-                     <input className="barraAlturaMax" placeholder="max" type= "text" name="heightMax" value={input.heightMax} onChange={handleInputChange}/>
-                        {errors.heightMax && (
-                           <p className="valAMax"> {errors.heightMax} </p> 
-                        )}                   
+                     </div>                 
+                     
+                    <div className="ordenAlturaMax">
+                       <input className="barraAlturaMax" placeholder="max" type= "text" name="heightMax" value={input.heightMax} onChange={handleInputChange}/>
+                           {errors.heightMax && (
+                              <p className="valAMax"> {errors.heightMax} </p> 
+                        )}  
+                    </div>
+                    
                   </div>
                   <br/>
 

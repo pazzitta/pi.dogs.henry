@@ -63,7 +63,7 @@ const getAllDogsDB = async () => {
 
             } 
             
-             console.log(races)
+            //  console.log(races)
             return racesStrig
           } catch (error) {
             console.log("Hubo un error en getDbInfo", error)
