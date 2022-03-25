@@ -40,8 +40,8 @@
 }
 .crear {
     position: relative;
-    left: 10px;
-    bottom: 26px;
+    left: 170px;
+    bottom: 130px;
     background-color: rgb(62, 62, 62);
     border-radius: 5px;
     height: 7vh;
@@ -69,7 +69,7 @@
 }
 .selecTemp {
     position: relative;
-    right: 75px;
+    right: 130px;
     bottom: 30px;
     background-color: rgb(62, 62, 62);
     border-radius: 5px;
@@ -119,11 +119,11 @@
 
 .valNombre {
     position: relative;
-    left:185px;
+    left:220px;
     bottom: 33px;
     color: rgb(165, 165, 165);
     background-color: aqua;
-    background-color: transparent;
+    /* background-color: transparent; */
     width: 290px;
     height: 37px;
     line-height : 15px;
@@ -215,8 +215,28 @@
     position: relative;
     bottom: 31.5px;
     background-color: rgb(17, 131, 60);
+    background-color: transparent;
     height: 70px;
  }
+
+ .ordenPesoMin {
+    position: relative;
+    bottom: 36px;
+    left: 200px;
+    background-color: rgb(134, 84, 84);
+    background-color: transparent;
+    height: 70px;
+    width: 165px;
+} 
+.ordenPesoMax {
+    position: relative;
+    bottom: 106px;
+    left: 370px;
+    background-color: rgb(70, 50, 161);
+    background-color: transparent;
+    height: 70px;
+    width: 165px;
+} 
 
 .textPeso {
     position: relative;
@@ -229,8 +249,8 @@
 }
 .barraPesoMin {
     position: relative;
-    left: 8px;
-    bottom: 36px;
+    left: 0px;
+    bottom: 0px;
     background-color: transparent;
     border-color: white;
     border-radius: 6px;
@@ -239,8 +259,8 @@
 }
 .barraPesoMax {
     position: relative;
-    left: 160px;
-    bottom: 139px ;
+    left: 0px;
+    bottom: 0px ;
     background-color: transparent;
     border-color: white;
     border-radius: 6px;
@@ -249,24 +269,24 @@
 }
 .valPMin {
     position: relative;
-    left:186px;
-    bottom:50px;
+    left:0px;
+    bottom:15px;
     color: rgb(212, 212, 212);
     background-color: aqua;
     /* background-color: transparent; */
-    width: 145px;
+    width: 165px;
     height: 37px;
     line-height : 15px;
 }
 
 .valPMax {
     position: relative;
-    left:345px;
-    bottom:155px;
+    left:0px;
+    bottom:15px;
     color: rgb(212, 212, 212);
     background-color: aqua;
     /* background-color: transparent; */
-    width: 145px;
+    width: 165px;
     height: 37px;
     line-height : 15px;
 }

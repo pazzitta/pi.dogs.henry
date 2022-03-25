@@ -99,8 +99,8 @@ const [errors, setErrors] = useState ({
       name: '',
       heightMin: '',
       heightMax :'',
-      weightMin: 'Campo requerido',
-      weightMax: 'Campo requerido',
+      weightMin: '',
+      weightMax: '',
       life_span: '',
 })
 
@@ -200,14 +200,20 @@ const handleSubmit = (e) => {
                      <label className="textPeso">Peso</label>
                      <br/>
                      
+                     <div className="ordenPesoMin">
                      <input className="barraPesoMin" placeholder="min" type= "text" name="weightMin" value={input.weightMin} onChange={handleInputChange}/>
                      {errors.weightMin && (
                         <p className="valPMin"> {errors.weightMin} </p> 
                      )}
+                    </div>
+                    
+                    <div className="ordenPesoMax">
                      <input className="barraPesoMax" placeholder="max" type= "text" name="weightMax" value={input.weightMax} onChange={handleInputChange}/>
                      {errors.weightMax && (
                         <p className="valPMax"> {errors.weightMax} </p> 
                      )}
+                    </div>
+                  
                   </div>
                   <br/>
 

@@ -90,40 +90,7 @@ const allInfoApiAndDB = async () => { ///ESTA TENGO QUE USAR PARA LA PRÓXIMA RU
     return (allInfo)
 }
 
-//DE OTRO BYID
-
-const getDogsForIdApi = async (id) => {
-    try{
-        // Traigo todo los datos de la API
-        const resultado = await axios (`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY1}`);
-        
-
-        // Filtro por cada uno que incluya el nombre que recibo por parametro con el nombre de cada dog y lo guardo en un array 
-        const dogEncontrado = await resultado.data.filter(dog => {
-            if(parseInt(dog.id) === parseInt(id)) return dog
-        })
-
-        const ordenarDatos = await dogEncontrado.map(dog => {
-            return {
-                id: dog.id,
-                name: dog.name,
-                height: dog.height,
-                weight: dog.weight,
-                life_span: dog.life_span,
-                image: dog.image,
-                temperament: el.temperament? el.temperament : 'Perrito sin temperamento',
-            }
-        })
-
-        return ordenarDatos;
-
-    }catch(err){
-        console.log("error");
-        return err;
-    }
-}
-
-
+//by id!
 // Query a la base de datos en el cual traera solo los que contengan el id
 const getDogsForIdDb = async (id) => { 
     try{
@@ -158,47 +125,21 @@ const getDogsForIdDb = async (id) => {
     }
 }
 
-const getById = async (req, res) => {
-
-    // valido si me llega un id por parametro
-    if(req.params.id){ 
-        const { id } = req.params;
-        console.log(id)
-        try{
-            const getDogForIdAp = await getDogsForIdApi(id); 
-            const getDogForId = await getDogsForIdDb(id);
-            
-            if(id < 500) return res.status(200).json(getDogForIdAp);            
-            else return res.status(200).json(getDogForId);
-        }
-        // Si algo sale mal entrar aqui en el catch
-        catch(err){
-            console.log(err)
-            res.send({error: err})
-        }
-     }
-};
-
-
 //byId mio
 
-// const oneById = async (id) => {
+const oneById = async (id) => {
     
-//     try {
-//         const allForFilter = await axios (`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY1}`);
-//      if (id) {
-//         const result = allForFilter.data.filter(e => e.id === Number(id));
-//         return(result);
-//     }       
+    try {
+        const allForFilter = await axios (`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY1}`);
+     if (id) {
+        const result = allForFilter.data.filter(e => e.id === Number(id));
+        return(result);
+    }       
 
-//     }catch (error) {
-//         console.log('Error en oneById')
-//     }
-//   // if(id) {
-//     //     let oneById = await allForFilter.data.filter (el => el.id.toString() === el.id.toString()); 
-//     //     return (oneById)
-//     // }
-// }
+    }catch (error) {
+        console.log('Error en oneById')
+    }
+}
 
 // const oneByDB = async (id) => {
 //     return await Dog.findByPk(id, {
@@ -234,35 +175,34 @@ const getAllDogsAndName = async (req, res, next) => {
      }
 };
 
-// const getById = async (req, res, next) => {
-//     const {id} = req.params  //así está destructurado y así: const id = req.params.id, no.
-//     try{
-//     const allInfoById = await oneById(id);
-//     if (id.length < 4) {
-//             let infoNecId = allInfoById?.map (el => {
-//                 return {
-//                     image: el.image.url,
-//                     name: el.name,
-//                     temperament: el.temperament? el.temperament : 'Perrito sin temperamento',
-//                     weight: el.weight.metric !== "NaN" ? el.weight.metric : "27-34",
-//                     height: el.height.metric,
-//                     life_span: el.life_span
-//                 }
-//             })
-//             infoNecId.length === 0?
-//             res.status(404).send ('No se encontró el perrito requerido, intentelo de nuevo'):
-//             res.send (infoNecId)
-//         } else {
-//             let infoDbById = await oneByDB (id);
-//             let aux= [...infoDbById]
-//             console.log (aux)            
-//             return res.json(aux)
-//         }
-//     } catch (error) {
-//         next (error)
-//     }
+const getById = async (req, res, next) => {
+    const {id} = req.params  //así está destructurado y así: const id = req.params.id, no.
+    try{
+    const allInfoById = await oneById(id);
+    if (id.length < 4) {
+            let infoNecId = allInfoById?.map (el => {
+                return {
+                    image: el.image.url,
+                    name: el.name,
+                    temperament: el.temperament? el.temperament : 'Perrito sin temperamento',
+                    weight: el.weight.metric !== "NaN" ? el.weight.metric : "27-34",
+                    height: el.height.metric,
+                    life_span: el.life_span
+                }
+            })
+            infoNecId.length === 0?
+            res.status(404).send ('No se encontró el perrito requerido, intentelo de nuevo'):
+            res.send (infoNecId)
+        } else {
+            let infoDbById = await getDogsForIdDb (id);
+            console.log (infoDbById)            
+            return res.json(infoDbById)
+        }
+    } catch (error) {
+        next (error)
+    }
 
-// };
+};
 
 //POST 
 
