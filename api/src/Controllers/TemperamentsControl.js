@@ -18,22 +18,20 @@ const getAllTemperaments = async (req, res, netx) => {
         return aux;
             // const todosJuntos = el.temperament;
             // return (todosJuntos)
-        })
+        });
     
     // intera en los array y devuelve un solo array con todos los elementos y orrdenados alfabéticamente
-    const sinEspacios = infoApiTemp.flat().filter(Boolean).sort()
-    const stringUnicos = [...new Set(sinEspacios)] //SET El objeto global Set es una estructura de datos, una colección de valores que permite sólo almacenar valores únicos de cualquier tipo, incluso valores primitivos u referencias a objetos.Es posible iterar sobre los elementos en el orden de inserción.
+    const sinEspacios = infoApiTemp.flat().filter(Boolean).sort();
+    const stringUnicos = [...new Set(sinEspacios)]; //SET El objeto global Set es una estructura de datos, una colección de valores que permite sólo almacenar valores únicos de cualquier tipo, incluso valores primitivos u referencias a objetos.Es posible iterar sobre los elementos en el orden de inserción.
     
     // Encuentro o creo en el modelo de Temperamento, cada temperamento donde el nombre sea igual al dog en el que estoy en ese momento
-    stringUnicos.forEach (dog => Temperament.findOrCreate ({
-        where : {
-            name: dog
-        }
-    }))
+    stringUnicos.map(dog => Temperament.findOrCreate ({
+        where : {name: dog}
+    }));
 
     const busquedaDb = await Temperament.findAll();
 
-    res.send (busquedaDb)    //ya están en la base de datos!
+    res.send (busquedaDb);    //ya están en la base de datos!
        
     // const vertem = await allInArray();
     // var aux = vertem

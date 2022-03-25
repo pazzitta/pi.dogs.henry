@@ -27,7 +27,7 @@ export default function Cards () {
  
     useEffect (()=> {                   //trae del estado las razas cuando el componente se monta
       dispatch (getAllRace())
-    }, [dispatch]) //esta última parate es para que no se genere un bucle infinito de llamados
+    }, [dispatch]) //esta última parate es para que no se genere un bucle infinito de llamados, como no depende de nada el dispatch se lo podría sacar.
 
     // ver si puedo agragar una imagen randon para no tenerla que poner en el render del detail
     return (
@@ -39,7 +39,8 @@ export default function Cards () {
                    return (
                        <div key={dogRace.id} >
                            <Link to= {"/detail/" + dogRace.id} className="sinlinea">
-                              <Card  image={dogRace.image} name={dogRace.name} temperament={dogRace.temperament} weight={dogRace.weight}  />
+                               {/* creo que va por acá, pero falta algo */}
+                              <Card  image={dogRace.image} name={dogRace.name} temperament={dogRace.temperament} weight={dogRace.weight} /> 
                            </Link>
                        </div>
                    )}               

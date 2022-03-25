@@ -29,7 +29,7 @@ export function validate (input) {
       errors.heightMax = "Campo requerido"
    }else if (!/^[0-9]\d*(\.\d+)?$/.test(input.heightMax)) {
       errors.heightMax = "Ingrese solo números enteros"   ///lee el primer numero no el numero entero
-   }else if (input.heightMax < input.heightMin) {
+   }else if (parseInt(input.heightMax) <= parseInt(input.heightMin)) {
       errors.heightMax = "Debe ser mayor a la altura miníma"
    }else if (input.heightMax > 149) {
       errors.heightMax = "No es jirafa ;)"
@@ -50,7 +50,7 @@ export function validate (input) {
       errors.weightMax = "Campo requerido"
    }else if (!/^[0-9]\d*(\.\d+)?$/.test(input.weightMax)) {
       errors.pesoMax = "Ingrese solo números enteros"
-   }else if (input.weightMax  <  input.weightMin) {
+   }else if (parseInt(input.weightMax)  <=  parseInt(input.weightMin)) {
    errors.weightMax = "Debe ser mayor al peso minímo"
    }else if (input.weightMax > 130) {
    errors.weightMax= "Ni que fuese elefante ;)"

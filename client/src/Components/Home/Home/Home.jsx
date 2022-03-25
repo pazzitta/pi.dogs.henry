@@ -5,24 +5,35 @@ import SearchBar from "../../SearchBar/SearchBar";
 import Cards from "../Cards/Cards";
 import './Home.css'
 import { getAllTemperaments, orderByNameAz, orderByNameZa, filterCreated, orderByTemperaments, 
-orderByPesoMin, orderByPesoMax } from "../../../Redux/actions";
+orderByPesoMin, orderByPesoMax, getAllRace } from "../../../Redux/actions";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 
-//HAY UN ERROR CON EL SORTPeso, Y EL ARRAY QUE TRAE EL REDUCER DEL TEMPERAMENTO ESTÁ VACIÓ(el length es 0)!
+//HAY UN ERROR CON EL SORTPeso,
+//no refresca los SELECT
+//TENGO QUE PONER UN DISPATCH TEMPERAMENTEN EN EL USE EFECTS DEL GETtEMPERAMENTES?ver si rompe algo...
+
 
 export default function Homepage () {
 
 const dogtemperaments = useSelector ((state) => state.temperaments);
 const dispatch = useDispatch ();
 
+
 useEffect(() => {
     dispatch(getAllTemperaments())
+    dispatch (getAllRace())
  },[dispatch])
 
 
 const [orden, setOrden] = useState('')
 const [page, setPage] = useState(1);
+
+
+function hadleClick (e) {
+    e.preventDefault ();
+    dispatch(getAllRace())
+};
 
 function handleSortName(e){ //acá debería ordenar como me los trae de la api con el value All y el getAllDogs de las cards?
     if(e.target.value === "Asc"){
@@ -72,8 +83,8 @@ function handleTemperaments (e) {
            
            <BarraSup/>  
            <SearchBar/> 
-           {/* FALATA QUE ANDE ESTE BOTÓN, HACER EL HANDLE A ALLRACE */}
-           <button className="botonRefresh">Volver a cargar todas las razas</button>
+           
+           <button className="botonRefresh" onClick={hadleClick} >Volver a cargar todas las razas</button>
            
            <div>
         

@@ -26,21 +26,49 @@ const getAllDogsApi = async () => {
   }
 };
 
+// const getAllDogsDB = async () => {
+//     try {
+//         return await Dog.findAll({
+//           include: {
+//             model: Temperament,
+//             attributes: ["name"], //traigo el nombre de los temperamentos
+//             through: {
+//               attributes: [], //tomo solo lo que queda en el arreglo atributes
+//             },
+//           },
+//         });
+//       } catch (error) {
+//         console.log("Hubo un error en getDbInfo", error)
+//       }
+//     };
+
 const getAllDogsDB = async () => {
-    try {
-        return await Dog.findAll({
-          include: {
-            model: Temperament,
-            attributes: ["name"], //traigo el nombre de los temperamentos
-            through: {
-              attributes: [], //tomo solo lo que queda en el arreglo atributes
-            },
-          },
-        });
-      } catch (error) {
-        console.log("Hubo un error en getDbInfo", error)
-      }
-    };
+        try {
+
+            let races = await Dog.findAll({
+              include: {
+                model: Temperament,
+                attributes: ["name"], //traigo el nombre de los temperamentos
+                through: {
+                  attributes: [], //tomo solo lo que queda en el arreglo atributes
+                },
+              },
+            });
+            let racesStrig = [];
+            for (let i=0; i< races.length; i++) {
+                var temper = races[i].dataValues.temperaments && races[i].dataValues.temperaments.map(t=> t.name) 
+                var temperaments = temper.join(", ")
+                let race = {...races[i].dataValues, ["temperament"] : temperaments}
+                racesStrig.push(race)
+
+            } 
+            
+             console.log(races)
+            return racesStrig
+          } catch (error) {
+            console.log("Hubo un error en getDbInfo", error)
+          }
+        };   
 
 // const getAllDogsDB = async () => {
 //     try {
@@ -114,7 +142,7 @@ const getAllDogsAndName = async (req, res, next) => {
 };
 
 const getById = async (req, res, next) => {
-    const {id} = req.params 
+    const {id} = req.params  //así está destructurado y así: const id = req.params.id, no.
     try{
     const allInfoById = await oneById(id);
     if (id.length < 4) {
@@ -146,21 +174,23 @@ const getById = async (req, res, next) => {
 //el post anda pero me pasa lo mismo que antes con los temperamentos, no los agrega! 
  const createNewRace = async (req, res) => {
      try{
-         const {name, heightMin, heightMax , weightMin, weightMax, life_span, image, temperament} = req.body;
+         const {name, heightMin, heightMax , weightMin, weightMax, life_span, image, temperament, createdInDb } = req.body;
          const newRace = await Dog.create({
             name,
             height: `${heightMin.trim()} - ${heightMax.trim()}`,
             weight: `${weightMin.trim()} - ${weightMax.trim()}`,
             life_span,
-            image
+            image,
+            createdInDb
             // id Ver si por esto no anda el detail 
          })
          let temperamentDB = await Temperament.findAll({
                  where: { name: temperament },
                })
-        console.log(temperamentDB)      
-       await newRace.addTemperament(temperamentDB)
-       
+             
+       await newRace.addTemperament(temperamentDB) //este await no lo pone selene, ver si anda sin
+       let race =  await Dog.findOne({where : {name: name}}, {include: {model: Temperament}})    
+       //    console.log(newRace) 
         res.send(newRace) 
      }catch (error) {
          console.log('no anda post')
