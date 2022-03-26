@@ -123,7 +123,7 @@
     bottom: 33px;
     color: rgb(165, 165, 165);
     background-color: aqua;
-    /* background-color: transparent; */
+    background-color: transparent;
     width: 290px;
     height: 37px;
     line-height : 15px;
@@ -273,7 +273,7 @@
     bottom:15px;
     color: rgb(212, 212, 212);
     background-color: aqua;
-    /* background-color: transparent; */
+    background-color: transparent;
     width: 165px;
     height: 37px;
     line-height : 15px;
@@ -285,7 +285,7 @@
     bottom:15px;
     color: rgb(212, 212, 212);
     background-color: aqua;
-    /* background-color: transparent; */
+    background-color: transparent;
     width: 165px;
     height: 37px;
     line-height : 15px;

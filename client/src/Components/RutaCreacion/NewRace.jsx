@@ -167,7 +167,7 @@ const handleSubmit = (e) => {
                      <br/>
                  
                      <div>
-                        <input className="barraName" placeholder="nombre" type= "text" name="name" value={input.name} onChange={handleInputChange} />
+                        <input autocomplete="off" className="barraName" placeholder="nombre" type= "text" name="name" value={input.name} onChange={handleInputChange} />
                         {errors.name && (
                            <p className="valNombre"> {errors.name} </p> 
                         )}
@@ -180,14 +180,14 @@ const handleSubmit = (e) => {
                      <br/>
 
                      <div className="ordenAlturaMin">
-                     <input className="barraAlturaMin" placeholder="min" type= "text" name="heightMin" value={input.heightMin} onChange={handleInputChange}/>
+                     <input autocomplete="off" className="barraAlturaMin" placeholder="min" type= "text" name="heightMin" value={input.heightMin} onChange={handleInputChange}/>
                         {errors.heightMin && (
                            <p className="valAMin"> {errors.heightMin}</p> 
                         )}
                      </div>                 
                      
                     <div className="ordenAlturaMax">
-                       <input className="barraAlturaMax" placeholder="max" type= "text" name="heightMax" value={input.heightMax} onChange={handleInputChange}/>
+                       <input autocomplete="off" className="barraAlturaMax" placeholder="max" type= "text" name="heightMax" value={input.heightMax} onChange={handleInputChange}/>
                            {errors.heightMax && (
                               <p className="valAMax"> {errors.heightMax} </p> 
                         )}  
@@ -201,14 +201,14 @@ const handleSubmit = (e) => {
                      <br/>
                      
                      <div className="ordenPesoMin">
-                     <input className="barraPesoMin" placeholder="min" type= "text" name="weightMin" value={input.weightMin} onChange={handleInputChange}/>
+                     <input autocomplete="off" className="barraPesoMin" placeholder="min" type= "text" name="weightMin" value={input.weightMin} onChange={handleInputChange}/>
                      {errors.weightMin && (
                         <p className="valPMin"> {errors.weightMin} </p> 
                      )}
                     </div>
                     
                     <div className="ordenPesoMax">
-                     <input className="barraPesoMax" placeholder="max" type= "text" name="weightMax" value={input.weightMax} onChange={handleInputChange}/>
+                     <input autocomplete="off" className="barraPesoMax" placeholder="max" type= "text" name="weightMax" value={input.weightMax} onChange={handleInputChange}/>
                      {errors.weightMax && (
                         <p className="valPMax"> {errors.weightMax} </p> 
                      )}
@@ -220,7 +220,7 @@ const handleSubmit = (e) => {
                   <div className="cajaLife">
                   <label className="textLife">Años de vida</label>
                   <br/>
-                  <input className="barraLife" placeholder="life" type= "text" name="life_span" value={input.life_span} onChange={handleInputChange}/>
+                  <input autocomplete="off" className="barraLife" placeholder="life" type= "text" name="life_span" value={input.life_span} onChange={handleInputChange}/>
                   {errors.life_span && (
                         <p className="valVida"> {errors.life_span} </p> 
                      )}

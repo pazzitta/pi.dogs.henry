@@ -101,10 +101,23 @@ const getDogsForIdDb = async (id) => {
             },
             include: Temperament
         })
+        console.log("1", resultado)
         //ahy que arreglar lo de los temperamentos...
-        const listaTemperamentos = resultado[0].temperaments.map(temp => temp.nombre)
+        let racesStrig = [];
+        for (let i=0; i< resultado.length; i++) {
+            var temper = resultado[i].dataValues.temperaments && resultado[i].dataValues.temperaments.map(t=> t.name) 
+            var temperaments = temper.join(", ")
+            let race = {...resultado[i].dataValues, ["temperament"] : temperaments}
+            racesStrig.push(race)
 
-        const listaDogs = resultado.map(dog => {
+        } 
+        
+        //  console.log(races)
+        // return racesStrig 
+       
+        // const listaTemperamentos = resultado[0].temperaments.map(temp => temp.nombre)
+
+        const listaDogs = racesStrig.map(dog => {
             return {
                 id: dog.id,
                 name: dog.name,
@@ -112,7 +125,7 @@ const getDogsForIdDb = async (id) => {
                 weight: dog.weight,
                 life_span: dog.life_span,
                 image: dog.image,
-                temperament: listaTemperamentos, 
+                temperament: dog.temperament, 
             }
         })
         console.log (listaDogs)
