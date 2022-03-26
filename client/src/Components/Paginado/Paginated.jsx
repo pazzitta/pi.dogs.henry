@@ -8,7 +8,7 @@ export default function Paginated ({cardsPerPage, estadoCard, paginateds}) {
     
     return (
         <nav>
-        <ul className="paginado">
+        <ul className="paginado" >
             {pageNumber && pageNumber.map (number => (
                 <li className="nums" key = {number}>
                     <a onClick={()=> paginateds(number)}>{number}</a>

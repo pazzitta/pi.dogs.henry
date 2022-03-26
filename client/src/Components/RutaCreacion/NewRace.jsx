@@ -6,6 +6,8 @@ import { useDispatch, useSelector} from "react-redux";
 import { useEffect } from "react";
 import { getAllTemperaments, postRace } from "../../Redux/actions";
 
+//SOLO NO ME TIRA EL ERROR DEL SELECT... VER PORQUÉ!
+
 //validaciones
 export function validate (input) {
    let errors = {};
@@ -79,6 +81,7 @@ export default function NewRace () {
 const dogtemperaments = useSelector ((state) => state.temperaments);
 const dispatch = useDispatch ();
 const history = useHistory();
+const [errors, setErrors] = useState ({})
 
 useEffect(() => {
     dispatch(getAllTemperaments())
@@ -95,15 +98,6 @@ const [input, setInput] = useState ({
       temperament: []
 })
 
-const [errors, setErrors] = useState ({
-      name: '',
-      heightMin: '',
-      heightMax :'',
-      weightMin: '',
-      weightMax: '',
-      life_span: '',
-})
-
 const handleInputChange = (e) => {
    // S
    e.preventDefault ();
@@ -118,7 +112,7 @@ const handleInputChange = (e) => {
    })
   );
 }
-
+ //en este falta algo pero no sé si es necesario o no
 const handleSelect = (e) => {
    setInput ({
       ...input, 
@@ -132,6 +126,18 @@ const handleSelect = (e) => {
 const handleSubmit = (e) => {
    e.preventDefault()
    console.log(input)
+   if (Object.values(errors).length > 0) {
+      alert("Por favor complete la información requerida");
+  } else if (
+     input.name === '' && 
+     input.heightMin === '' && 
+     input.heightMax === '' &&
+     input.weightMin === '' &&
+     input.weightMax === '' &&
+     input.life_span === '' &&
+     !input.temperament.length) {
+     alert("Por favor complete el formulario");}
+ else {
    dispatch(postRace(input))
    alert ("Se creo un nueva raza")
    setInput ({
@@ -144,6 +150,7 @@ const handleSubmit = (e) => {
       temperament: []
    })
    history.push('/home')
+ }
 }
 
     return (

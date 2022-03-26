@@ -128,7 +128,7 @@ const getDogsForIdDb = async (id) => {
                 temperament: dog.temperament, 
             }
         })
-        console.log (listaDogs)
+        // console.log (listaDogs)
         return listaDogs;
     }
     // Si algo sale mal entrar aqui en el catch

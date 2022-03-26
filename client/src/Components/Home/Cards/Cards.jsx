@@ -33,7 +33,10 @@ export default function Cards () {
     return (
        
        <div>
-           <Paginated cardsPerPage={cardsPerPage} estadoCard= {estadoCard.length} paginateds = {paginateds} />
+           <div className="ordenPaginado">
+           <Paginated  cardsPerPage={cardsPerPage} estadoCard= {estadoCard.length} paginateds = {paginateds} />
+           </div>
+          
             <div className="ordenCards">
             {currentCards.map( (dogRace) => {
                    return (
