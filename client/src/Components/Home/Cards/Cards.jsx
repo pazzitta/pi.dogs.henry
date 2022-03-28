@@ -42,7 +42,6 @@ export default function Cards () {
                    return (
                        <div key={dogRace.id} >
                            <Link to= {"/detail/" + dogRace.id} className="sinlinea">
-                               {/* creo que va por acá, pero falta algo */}
                               <Card  image={dogRace.image} name={dogRace.name} temperament={dogRace.temperament} weight={dogRace.weight} /> 
                            </Link>
                        </div>

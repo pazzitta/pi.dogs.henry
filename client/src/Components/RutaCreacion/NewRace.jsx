@@ -70,7 +70,7 @@ export function validate (input) {
    errors.life_span = "No es tortuga..."
    }
 
-//temperaments
+//temperaments NO ME TIRA EL ERROR 
 if (!input.temperament.length) errors.temperament = "Debe seleccionar al menos un temperamento"
 
    return errors
@@ -112,15 +112,27 @@ const handleInputChange = (e) => {
    })
   );
 }
- //en este falta algo pero no sé si es necesario o no
+
 const handleSelect = (e) => {
+   let newArray = input.temperament;
+   let find = newArray.indexOf(e.target.value);
+   
+   if (find >= 0) {
+       newArray.splice(find, 1)
+   } else {
+       newArray.push(e.target.value)
+   }
    setInput ({
       ...input, 
-      temperament: [...input.temperament, e.target.value]
+      temperament: newArray
    })
-   console.log(input)
-   const validations = validate(input);
-      setErrors(validations) 
+   setErrors (validate ({
+      ...input,
+      [e.target.name]: e.target.value
+   })
+  );
+   // const validations = validate(input);
+   //    setErrors(validations) 
 }
 
 const handleSubmit = (e) => {
@@ -233,19 +245,30 @@ const handleSubmit = (e) => {
                      )}
                   </div>
                   
-                  <div> 
+                  <div className="cajatemp"> 
                   <select className="selecTemp" onChange={handleSelect} >
                      <option disabled selected>Elegir temperamento/s</option>
                         {dogtemperaments && dogtemperaments.map((dt)=>(
                               <option key={dt.id} value={dt.name}>{dt.name}</option>
                            ))}
                   </select>
-                  <ul><li> {input.temperament.map(ele => ele + " ,")}</li></ul>
+                  <div>
+                  {errors.temperament && (
+                        <p className="valTempe"> {errors.temperament} </p> 
+                     )} 
+                  </div>
+                  
+                  <div className="cajaValiTem">
+                  <ul className="sinitem"><li> {input.temperament.map(ele => ele + " ,")}</li></ul>
+                  </div>
+                  
                   </div>
 
+                  <div className="cajaBoton">
                   <button type="submit" className="crear">CREAR</button>
-                  
-              </form>
+                  </div>
+                 
+                  </form>
            </div>
            
            </div>       

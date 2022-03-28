@@ -97,24 +97,24 @@ function handleTemperaments (e) {
             </div>
             
             <div className="ubicTodos">
-            <select onChange={(e) => handleSortName (e)} className="ordenalf">
-                <option value='All' disabled selected>Ordenar por orden alfabético</option>
+            <select  onChange={(e) => handleSortName (e)} className="ordenalf">
+                <option value='All' selected="selected" hidden="hidden">Ordenar por orden alfabético</option>
                 <option value= 'Asc'>A-Z</option>
                 <option value= 'Desc'>Z-A</option>
             </select>
             <select onChange={handleSortPeso}  className="peso">
-                <option disabled selected>Ordenar por peso</option>
+                <option selected="selected" hidden="hidden">Ordenar por peso</option>
                 <option value="Min">Min-Max</option>
                 <option value="Max">Max-Min</option>
             </select>  
             <select onChange={ (e) =>handleTemperaments (e)} className="temperamentofil">
-            <option disabled selected>Filtrar por temperamento</option>
+            <option selected="selected" hidden="hidden">Filtrar por temperamento</option>
             {dogtemperaments.map((dt)=>(
                               <option key={dt.id} value={dt.name}>{dt.name}</option>
                            ))}
             </select>
             <select onChange={(e) => handleFilterCreated (e)} className="razafil">
-                <option value='All' disabled selected>Filtrar por raza</option>
+                <option value='All' selected="selected" hidden="hidden">Filtrar por raza</option>
                 <option value='Existentes'>Existentes</option>
                 <option value='Creadas'>Creadas</option>
             </select>           

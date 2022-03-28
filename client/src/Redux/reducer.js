@@ -86,15 +86,15 @@ const rootReducer =(state= initialState, action) => {
             //     c = parseInt(weight2[0]);
             //     b = parseInt(weight1[1]);
             //     d = parseInt(weight2[1]);
-            //     prom1 = (a + b) / 2;
-            //     prom2 = (c + d) / 2;
+            //     prom1 = Math.ceil((a + b) / 2);
+            //     prom2 = Math.ceil((c + d) / 2);
             //     return { prom1, prom2 };
             //   };
             //   let resultsMin = state.raceAll.sort((a, b) => {
             //     let { prom1, prom2 } = generaPesoProm(a.weight, b.weight);
             //     return prom1 === prom2 ? 0 : prom1 > prom2 ? 1 : -1;
             //   });
-                let resultsMin = state.raceAll.sort((a,b) => parseInt(a.weight.slice(0, 2)) - parseInt(b.weight.slice(0, 2)))
+                let resultsMin = state.raceAll.sort((a,b) => parseInt(a.weight.slice(0, 3)) - parseInt(b.weight.slice(0, 3)))
                 console.log(resultsMin)
                 return {
                     ...state,
