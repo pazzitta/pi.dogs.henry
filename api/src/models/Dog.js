@@ -23,7 +23,11 @@ module.exports = (sequelize) => {
       allowNull:false,
     },
     life_span : {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      get () {
+        const rawValue = this.getDataValue('life_span'); //ver porque no anda esto!
+        return rawValue ? rawValue + 'years' : null;
+      }
     },
     image : {
       type: DataTypes.STRING (10000),
