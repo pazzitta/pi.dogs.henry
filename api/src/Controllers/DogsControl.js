@@ -2,8 +2,9 @@ const axios = require ('axios');
 const {Dog, Temperament} = require ('../db')
 const {API_KEY1} = process.env
 
-//GETs (fucnciones previas)
-//all
+//GETs
+
+// All and byName
 const getAllDogsApi = async () => {
     try {
         const pedidoApi = await axios (`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY1}`);
@@ -26,21 +27,6 @@ const getAllDogsApi = async () => {
   }
 };
 
-// const getAllDogsDB = async () => {
-//     try {
-//         return await Dog.findAll({
-//           include: {
-//             model: Temperament,
-//             attributes: ["name"], //traigo el nombre de los temperamentos
-//             through: {
-//               attributes: [], //tomo solo lo que queda en el arreglo atributes
-//             },
-//           },
-//         });
-//       } catch (error) {
-//         console.log("Hubo un error en getDbInfo", error)
-//       }
-//     };
 
 const getAllDogsDB = async () => {
         try {
@@ -70,14 +56,6 @@ const getAllDogsDB = async () => {
           }
         };   
 
-// const getAllDogsDB = async () => {
-//     try {
-//         return await Dog.findAll ({include: Temperament} )
-//     }catch (error) {
-//         console.log ('Error en getAllDogsDB')
-//   }
-// };
-
 const allInfoApiAndDB = async () => { ///ESTA TENGO QUE USAR PARA LA PRÓXIMA RUTA
    try {
 
@@ -90,7 +68,27 @@ const allInfoApiAndDB = async () => { ///ESTA TENGO QUE USAR PARA LA PRÓXIMA RU
     return (allInfo)
 }
 
-//by id!
+const getAllDogsAndName = async (req, res, next) => {
+    try {
+       const {name} = req.query;
+       const allInfoT = await allInfoApiAndDB();
+
+       if (name) {
+          let dogsByName = allInfoT.filter(el => el.name.toLowerCase().includes(name.toLowerCase()));
+          dogsByName.length?
+          res.send(dogsByName):
+          res.status(404).send('Disculpe, la raza no fue encontrada, intente con otra')       
+       } else {
+           res.json(allInfoT)
+       }
+    }catch (error) {
+       next (error)
+    }
+};
+
+
+// oneByid
+
 // Query a la base de datos en el cual traera solo los que contengan el id
 const getDogsForIdDb = async (id) => { 
     try{
@@ -110,12 +108,7 @@ const getDogsForIdDb = async (id) => {
             let race = {...resultado[i].dataValues, ["temperament"] : temperaments}
             racesStrig.push(race)
 
-        } 
-        
-        //  console.log(races)
-        // return racesStrig 
-       
-        // const listaTemperamentos = resultado[0].temperaments.map(temp => temp.nombre)
+        }         
 
         const listaDogs = racesStrig.map(dog => {
             return {
@@ -138,8 +131,6 @@ const getDogsForIdDb = async (id) => {
     }
 }
 
-//byId mio
-
 const oneById = async (id) => {
     
     try {
@@ -153,40 +144,6 @@ const oneById = async (id) => {
         console.log('Error en oneById')
     }
 }
-
-// const oneByDB = async (id) => {
-//     return await Dog.findByPk(id, {
-//         include: {
-//             model: Temperament,
-//             attributes: ['name'],
-//             through: {
-//                 attributes: [],
-//             }
-//         }
-//     });
-    
-// }
-
-
-
-//GET (para la ruta)
-const getAllDogsAndName = async (req, res, next) => {
-     try {
-        const {name} = req.query;
-        const allInfoT = await allInfoApiAndDB();
-
-        if (name) {
-           let dogsByName = allInfoT.filter(el => el.name.toLowerCase().includes(name.toLowerCase()));
-           dogsByName.length?
-           res.send(dogsByName):
-           res.status(404).send('Disculpe, la raza no fue encontrada, intente con otra')       
-        } else {
-            res.json(allInfoT)
-        }
-     }catch (error) {
-        next (error)
-     }
-};
 
 const getById = async (req, res, next) => {
     const {id} = req.params  //así está destructurado y así: const id = req.params.id, no.
@@ -237,7 +194,7 @@ const getById = async (req, res, next) => {
                })
              
        await newRace.addTemperament(temperamentDB) //este await no lo pone selene, ver si anda sin
-       let race =  await Dog.findOne({where : {name: name}}, {include: {model: Temperament}})    
+    //    let race =  await Dog.findOne({where : {name: name}}, {include: {model: Temperament}})    
        //    console.log(newRace) 
         res.send(newRace) 
      }catch (error) {
@@ -245,7 +202,7 @@ const getById = async (req, res, next) => {
      }
 
  };
- //ME TRAE OBJETOS DENTRO DE UN ARRAY, LO TENGO QUE MAPAR Y SACAR SOLO EL STRIG
+
 
 
 module.exports = {

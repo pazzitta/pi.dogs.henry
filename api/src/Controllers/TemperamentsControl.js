@@ -33,24 +33,6 @@ const getAllTemperaments = async (req, res, netx) => {
 
     res.send (busquedaDb);    //ya están en la base de datos!
        
-    // const vertem = await allInArray();
-    // var aux = vertem
-    //     .map((e) => {
-    //       return {
-    //         name: e,
-    //       };
-    //     })
-    //     .filter((e) => e.name);
-    // // console.log(vertem);
-    // const todos = Temperament.bulkCreate(aux)
-    // vertem.map(el => {
-    //     Temperament.bulkCreate({
-    //         where: { name: el}
-    //     })
-    // });
-    // const enDb = await Temperament.findAll()
-    // res.send (enDb)
-    // console.log(vertem)
   } catch (error) {
       console.log ('no anda getAllTemperaments')
   }
