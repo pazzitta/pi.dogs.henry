@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import BarraSup from "../BarraPinta/BarraSup";
 import './DetailRace.css'
 import { Link } from "react-router-dom";
@@ -11,9 +11,11 @@ export default function DetailRace (props) {
 const dispatch = useDispatch();
 const raceDetails = useSelector(state => state.raceDetail);
 
+
+
 const id = props.match.params.id;
         
-/// ANDA PERO NO PASA LA INFO DE LOS CREADOS!        
+/// VER COMO HACER PARA QUE NO ME RENDERICE LA RAZA ANTERIOR       
 useEffect(() => {
     dispatch(getRaceDetail(id))
 }, [dispatch, id]);
@@ -44,8 +46,8 @@ useEffect(() => {
                <div className="liveNameDetail">Años de vida</div>
                <div className="liveDetail">{raceDetails[0].life_span}</div>
             
-            </div> 
-         : <img className="imageDetail" src="https://images.pexels.com/photos/3299905/pexels-photo-3299905.jpeg?cs=srgb&dl=pexels-goochie-poochie-grooming-3299905.jpg&fm=jpg" alt="" /> }
-     </div>
+            </div>
+            : <p>Volver</p>
+    } </div>
     )
 }

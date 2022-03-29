@@ -16,10 +16,11 @@ const getAllDogsApi = async () => {
                 id: el.id,
                 name: el.name,
                 temperament: el.temperament? el.temperament : 'Perrito sin temperamento',
-                weight: el.weight.metric !== "NaN" ? el.weight.metric : "27-34" ,
+                weight: el.weight.metric !== "NaN" ? el.weight.metric : "27-34",
                 image : el.image.url,
                 }
             })
+            // console.log(infoApi)
             return (infoApi)
         }
     } catch (error) {
@@ -40,6 +41,7 @@ const getAllDogsDB = async () => {
                 },
               },
             });
+            
             let racesStrig = [];
             for (let i=0; i< races.length; i++) {
                 var temper = races[i].dataValues.temperaments && races[i].dataValues.temperaments.map(t=> t.name) 
@@ -48,7 +50,7 @@ const getAllDogsDB = async () => {
                 racesStrig.push(race)
 
             } 
-            
+           
             //  console.log(races)
             return racesStrig
           } catch (error) {
@@ -58,14 +60,14 @@ const getAllDogsDB = async () => {
 
 const allInfoApiAndDB = async () => { ///ESTA TENGO QUE USAR PARA LA PRÓXIMA RUTA
    try {
+       const infApi = await getAllDogsApi ();
+       const infDb = await  getAllDogsDB ();
+       const allInfo = [...infApi, ...infDb];
+       return (allInfo)
 
    }catch (error) {
        console.log ('Error en allInfoApiAndDB')
-   }
-    const infApi = await getAllDogsApi ();
-    const infDb = await  getAllDogsDB ();
-    const allInfo = [...infApi, ...infDb];
-    return (allInfo)
+   } 
 }
 
 const getAllDogsAndName = async (req, res, next) => {
@@ -79,6 +81,7 @@ const getAllDogsAndName = async (req, res, next) => {
           res.send(dogsByName):
           res.status(404).send('Disculpe, la raza no fue encontrada, intente con otra')       
        } else {
+        console.log ("1", allInfoT)
            res.json(allInfoT)
        }
     }catch (error) {
@@ -99,8 +102,7 @@ const getDogsForIdDb = async (id) => {
             },
             include: Temperament
         })
-        console.log("1", resultado)
-        //ahy que arreglar lo de los temperamentos...
+        // console.log("2", resultado)
         let racesStrig = [];
         for (let i=0; i< resultado.length; i++) {
             var temper = resultado[i].dataValues.temperaments && resultado[i].dataValues.temperaments.map(t=> t.name) 
@@ -121,17 +123,16 @@ const getDogsForIdDb = async (id) => {
                 temperament: dog.temperament, 
             }
         })
-        // console.log (listaDogs)
+        // console.log ( "4", listaDogs)
         return listaDogs;
     }
-    // Si algo sale mal entrar aqui en el catch
     catch(err){ 
         console.log(err);
         return err;
     }
 }
 
-const oneById = async (id) => {
+const getoneByIdApi = async (id) => {
     
     try {
         const allForFilter = await axios (`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY1}`);
@@ -148,7 +149,7 @@ const oneById = async (id) => {
 const getById = async (req, res, next) => {
     const {id} = req.params  //así está destructurado y así: const id = req.params.id, no.
     try{
-    const allInfoById = await oneById(id);
+    const allInfoById = await getoneByIdApi(id);
     if (id.length < 4) {
             let infoNecId = allInfoById?.map (el => {
                 return {
@@ -176,7 +177,6 @@ const getById = async (req, res, next) => {
 
 //POST 
 
-//el post anda pero me pasa lo mismo que antes con los temperamentos, no los agrega! 
  const createNewRace = async (req, res) => {
      try{
          const {name, heightMin, heightMax , weightMin, weightMax, life_span, image, temperament, createdInDb } = req.body;
@@ -187,14 +187,12 @@ const getById = async (req, res, next) => {
             life_span,
             image,
             createdInDb
-            // id Ver si por esto no anda el detail 
          })
          let temperamentDB = await Temperament.findAll({
                  where: { name: temperament },
                })
              
        await newRace.addTemperament(temperamentDB) //este await no lo pone selene, ver si anda sin
-    //    let race =  await Dog.findOne({where : {name: name}}, {include: {model: Temperament}})    
        //    console.log(newRace) 
         res.send(newRace) 
      }catch (error) {

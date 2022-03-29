@@ -10,7 +10,7 @@ const server = express();
 server.name = 'API';
 
 server.use(express.urlencoded({ extended: true, limit: '50mb' }));
-server.use(express.json({ limit: '50mb' }));
+server.use(express.json({ limit: '50mb' })); //parcea la info
 server.use(cookieParser());
 server.use(morgan('dev'));
 server.use((req, res, next) => {
@@ -19,7 +19,7 @@ server.use((req, res, next) => {
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
   next();
-});
+}); //Esto es la info de dónde voy a aceptar info 
 
 server.use('/', routes);
 
