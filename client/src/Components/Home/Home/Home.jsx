@@ -64,7 +64,7 @@ function handleSortPeso(e){
         setPage (1);
         setOrden (`Ordenado ${e.target.value}`)
     }else{
-        
+       
     }
 }
 

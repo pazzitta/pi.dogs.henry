@@ -12,11 +12,20 @@ const getAllDogsApi = async () => {
     
         if (dataApi){
             let infoApi = dataApi.map (el => {
+                let weigth1 = '';
+                if (el.weight.metric === "NaN") {
+                   weigth1 = "27 - 34"
+                } else if (el.weight.metric.split(" - ")[0] === "NaN") {
+                    weigth1 = "6 - 8"
+                } else {
+                    weigth1 = el.weight.metric
+                }
                 return {
                 id: el.id,
                 name: el.name,
                 temperament: el.temperament? el.temperament : 'Perrito sin temperamento',
-                weight: el.weight.metric !== "NaN" ? el.weight.metric : "27-34",
+                weight: weigth1,
+                // weight: el.weight.metric ,
                 image : el.image.url,
                 }
             })
@@ -93,6 +102,7 @@ const getAllDogsAndName = async (req, res, next) => {
 // oneByid
 
 // Query a la base de datos en el cual traera solo los que contengan el id
+//CAMBAI EL WETHI
 const getDogsForIdDb = async (id) => { 
     try{
         // Me traigo todos los datos de la base de datos
@@ -118,7 +128,7 @@ const getDogsForIdDb = async (id) => {
                 name: dog.name,
                 height: dog.height,
                 weight: dog.weight,
-                life_span: dog.life_span,
+                life_span: dog.life_span + ' years',
                 image: dog.image,
                 temperament: dog.temperament, 
             }

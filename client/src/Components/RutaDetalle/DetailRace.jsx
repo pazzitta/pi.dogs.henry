@@ -14,7 +14,7 @@ const raceDetails = useSelector(state => state.raceDetail);
 
 
 const id = props.match.params.id;
-        
+
 /// VER COMO HACER PARA QUE NO ME RENDERICE LA RAZA ANTERIOR       
 useEffect(() => {
     dispatch(getRaceDetail(id))

@@ -26,7 +26,7 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       get () {
         const rawValue = this.getDataValue('life_span'); //ver porque no anda esto!
-        return rawValue ? rawValue + 'years' : null;
+        return rawValue ? rawValue + ' years' : null;
       }
     },
     image : {

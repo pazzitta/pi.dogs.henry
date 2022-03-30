@@ -6,7 +6,6 @@ import { useDispatch, useSelector} from "react-redux";
 import { useEffect } from "react";
 import { getAllTemperaments, postRace } from "../../Redux/actions";
 
-//SOLO NO ME TIRA EL ERROR DEL SELECT... VER PORQUÉ!
 
 //validaciones
 export function validate (input) {
@@ -14,7 +13,7 @@ export function validate (input) {
    if (!input.name) {
       errors.name = "Campo requerido"
    }else if (!/^[A-Z]+[A-Za-z0-9\s]+$/g.test(input.name)) {
-      errors.name= "Ingrese la primera letra en Mayúscula, solo letras y números"
+      errors.name= "Ingrese más de una letra ,la primera letra en Mayúscula, solo letras y números"
    }
 //Altura hay un tema con las \, pero si no la pongo deja poner puntos
    if (!input.heightMin) {
@@ -43,7 +42,7 @@ export function validate (input) {
    }else if (!/^[0-9]\d*(\.\d+)?$/.test(input.weightMin)) {
       errors.weightMin = "Ingrese solo números enteros"
    }else if (input.weightMin < 1) {
-   errors.aweightMin = "No es pluma ;)"
+   errors.weightMin = "No es pluma ;)"
    }else if (input.weightMin > 100) {
    errors.weightMin = "Ni que fuese elefante ;)"
    }
@@ -70,7 +69,7 @@ export function validate (input) {
    errors.life_span = "No es tortuga..."
    }
 
-//temperaments NO ME TIRA EL ERROR 
+
 if (!input.temperament.length) errors.temperament = "Debe seleccionar al menos un temperamento"
 
    return errors
@@ -97,6 +96,7 @@ const [input, setInput] = useState ({
       life_span: '',
       temperament: []
 })
+
 
 const handleInputChange = (e) => {
    // S
@@ -131,8 +131,7 @@ const handleSelect = (e) => {
       [e.target.name]: e.target.value
    })
   );
-   // const validations = validate(input);
-   //    setErrors(validations) 
+
 }
 
 const handleSubmit = (e) => {
