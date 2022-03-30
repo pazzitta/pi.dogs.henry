@@ -35,7 +35,7 @@ function hadleClick (e) {
     dispatch(getAllRace())
 };
 
-function handleSortName(e){ //acá debería ordenar como me los trae de la api con el value All y el getAllDogs de las cards?
+function handleSortName(e){ 
     if(e.target.value === "Asc"){
         e.preventDefault ();
         dispatch (orderByNameAz(e.target.value));

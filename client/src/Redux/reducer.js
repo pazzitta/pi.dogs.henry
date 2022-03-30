@@ -75,25 +75,8 @@ const rootReducer =(state= initialState, action) => {
                 ...state,
                 races: filterTemp
             }
-            case ORDER_BY_PESO_MIN: //ESTE ESTÁN MAL PERO NO TAN MAL! Tiene un tema cuando hay dos iguales en el primero y no tiene en cuanta el de atras. O sea, pone antes 1-5 que 1-3
-            //HAY QUE HACER EL PROMEDIO!
-            // const generaPesoProm = (weightA, weightB) => {
-            //     let a, b, c, d, prom1, prom2;
-            //     let weight1 = weightA.split(" - ");
-            //     let weight2 = weightB.split(" - ");
-            //     a = parseInt(weight1[0]);
-            //     c = parseInt(weight2[0]);
-            //     b = parseInt(weight1[1]);
-            //     d = parseInt(weight2[1]);
-            //     prom1 = Math.ceil((a + b)  / 2);
-            //     prom2 = Math.ceil((c + d) / 2);
-            //     return { prom1, prom2 };
-            //   };
-            //   let resultsMin = state.raceAll.sort((a, b) => {
-            //     let { prom1, prom2 } = generaPesoProm(a.weight, b.weight);
-            //     return a > b ? 1 : a < b ? -1 : (prom1 > prom2 ? 1 : prom1 < prom2 ? -1 : 0) 
-            //     // return prom1 === prom2 ? 0 : prom1 > prom2 ? 1 : -1;
-            //   });
+            case ORDER_BY_PESO_MIN:
+            
             let resultsMin = state.raceAll.sort((a,b) => parseInt(a.weight.split(" - ")[0]) - parseInt(b.weight.split(" - ")[0]))
             let resultmin1 = resultsMin.sort((a,b)=> {
                 if (parseInt(a.weight.split(" - ")[0]) === parseInt(b.weight.split(" - ")[0])) {

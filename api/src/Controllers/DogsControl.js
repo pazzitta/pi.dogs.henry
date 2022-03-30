@@ -11,7 +11,7 @@ const getAllDogsApi = async () => {
         const dataApi = await pedidoApi.data;
     
         if (dataApi){
-            let infoApi = dataApi.map (el => {
+            let infoApi = dataApi?.map (el => {
                 let weigth1 = '';
                 if (el.weight.metric === "NaN") {
                    weigth1 = "27 - 34"
@@ -25,7 +25,6 @@ const getAllDogsApi = async () => {
                 name: el.name,
                 temperament: el.temperament? el.temperament : 'Perrito sin temperamento',
                 weight: weigth1,
-                // weight: el.weight.metric ,
                 image : el.image.url,
                 }
             })
@@ -101,8 +100,6 @@ const getAllDogsAndName = async (req, res, next) => {
 
 // oneByid
 
-// Query a la base de datos en el cual traera solo los que contengan el id
-//CAMBAI EL WETHI
 const getDogsForIdDb = async (id) => { 
     try{
         // Me traigo todos los datos de la base de datos
@@ -157,16 +154,24 @@ const getoneByIdApi = async (id) => {
 }
 
 const getById = async (req, res, next) => {
-    const {id} = req.params  //así está destructurado y así: const id = req.params.id, no.
+    const {id} = req.params  
     try{
     const allInfoById = await getoneByIdApi(id);
     if (id.length < 4) {
             let infoNecId = allInfoById?.map (el => {
+                let weigth1 = '';
+                if (el.weight.metric === "NaN") {
+                   weigth1 = "27 - 34"
+                } else if (el.weight.metric.split(" - ")[0] === "NaN") {
+                    weigth1 = "6 - 8"
+                } else {
+                    weigth1 = el.weight.metric
+                }
                 return {
                     image: el.image.url,
                     name: el.name,
                     temperament: el.temperament? el.temperament : 'Perrito sin temperamento',
-                    weight: el.weight.metric !== "NaN" ? el.weight.metric : "27-34",
+                    weight: weigth1,
                     height: el.height.metric,
                     life_span: el.life_span
                 }
@@ -202,7 +207,7 @@ const getById = async (req, res, next) => {
                  where: { name: temperament },
                })
              
-       await newRace.addTemperament(temperamentDB) //este await no lo pone selene, ver si anda sin
+       await newRace.addTemperament(temperamentDB) 
        //    console.log(newRace) 
         res.send(newRace) 
      }catch (error) {
